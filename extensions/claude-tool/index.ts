@@ -353,15 +353,23 @@ export default function (pi: ExtensionAPI) {
 		name: "claude",
 		label: "Claude Code",
 		description:
-			`Invoke Claude Code for multi-step investigative tasks: web research, deep code analysis across many files, ` +
-			`broad exploration, or anything requiring multiple tool calls and reasoning. Claude Code has web search, ` +
-			`file access, bash, and all built-in tools. Do NOT use this for simple tasks you can do directly — ` +
-			`curl, read a file, run a command, check git status, etc. Use your own tools for those. ` +
-			`This tool spins up a full Claude Code session which is expensive and slow. Reserve it for tasks ` +
-			`that genuinely benefit from autonomous multi-turn execution. ` +
+			`Spawn a separate Claude Code session. ONLY use when the user explicitly asks for it, or for genuinely ` +
+			`complex multi-step investigations spanning many files that you cannot do yourself. ` +
+			`You have read, edit, write, bash, and all other tools — use THOSE first. ` +
+			`Do NOT delegate to Claude Code out of convenience or laziness. ` +
+			`This tool is expensive, slow, and spins up a full separate session. ` +
+			`If you can do the task with your own tools (read files, run commands, edit code, search the web), do it yourself. ` +
 			`Output is truncated to ${DEFAULT_MAX_LINES} lines or ${formatSize(DEFAULT_MAX_BYTES)}. ` +
 			`Set outputFile to write the result to a file instead of returning inline — saves tokens in your context. ` +
 			`Set resumeSessionId to continue a previous session (e.g. after cancellation or for follow-up questions).`,
+
+		promptGuidelines: [
+			"Do NOT use claude as a lazy handoff — you have read, edit, write, bash, parallel_search, parallel_research, parallel_extract, and all other tools. Use those directly.",
+			"Only invoke claude when: (1) the user explicitly requests it, OR (2) the task genuinely requires autonomous multi-step execution across dozens of files that would be impractical for you to do directly",
+			"For web research, use parallel_search/parallel_research/parallel_extract — NOT claude",
+			"For reading files, running commands, editing code, checking git status — use your own tools, NOT claude",
+			"Claude is expensive and slow. Default to doing the work yourself. When in doubt, don't use claude.",
+		],
 
 		parameters: Type.Object({
 			prompt: Type.Optional(Type.String({ description: "The task or question for Claude Code (single mode)" })),

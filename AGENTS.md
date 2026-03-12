@@ -199,7 +199,7 @@ ls ~/.pi/history/$(basename "$PWD")/research/
 | `scout` | Fast codebase reconnaissance | Haiku (fast, cheap) |
 | `worker` | Implements tasks from todos, makes polished commits (always using the `commit` skill), and closes the todo | Sonnet 4.6 |
 | `reviewer` | Reviews code for quality/security | Codex 5.3 |
-| `researcher` | Deep research using Claude Code (web research, code analysis, technical exploration) | Sonnet 4.6 → Claude Code |
+| `researcher` | Deep research using parallel.ai tools (web search, extraction, synthesis) + Claude Code for code analysis | Sonnet 4.6 |
 
 **Planning happens in the main session** (interactive, with user feedback) — not delegated to subagents.
 
@@ -208,7 +208,7 @@ ls ~/.pi/history/$(basename "$PWD")/research/
 - **Todos ready to execute** → Spawn `scout` then `worker` agents
 - **Code review needed** → Delegate to `reviewer`
 - **Need context first** → Start with `scout`
-- **Web research or external info needed** → Delegate to `researcher`
+- **Web research or external info needed** → Delegate to `researcher` (uses parallel.ai tools for web, Claude Code for code analysis)
 
 #### Chain Patterns
 
