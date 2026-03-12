@@ -53,10 +53,27 @@ import { truncateHead, DEFAULT_MAX_BYTES, DEFAULT_MAX_LINES, formatSize } from "
 import { Type } from "@sinclair/typebox";
 import { Text, truncateToWidth, visibleWidth, wrapTextWithAnsi } from "@mariozechner/pi-tui";
 import type { TUI, Component } from "@mariozechner/pi-tui";
-import { query } from "@anthropic-ai/claude-agent-sdk";
-import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
-import { join, basename } from "node:path";
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
+import { join, basename, dirname } from "node:path";
 import { homedir } from "node:os";
+import { execSync } from "node:child_process";
+import { fileURLToPath } from "node:url";
+
+// Lazy-loaded SDK query function. Resolved on first tool call to avoid
+// failing at extension load time when node_modules hasn't been installed yet.
+let _query: typeof import("@anthropic-ai/claude-agent-sdk").query | undefined;
+
+async function getQuery() {
+	if (_query) return _query;
+	const extDir = dirname(fileURLToPath(import.meta.url));
+	const nodeModulesDir = join(extDir, "node_modules", "@anthropic-ai", "claude-agent-sdk");
+	if (!existsSync(nodeModulesDir)) {
+		execSync("npm install --no-fund --no-audit", { cwd: extDir, stdio: "pipe" });
+	}
+	const sdk = await import("@anthropic-ai/claude-agent-sdk");
+	_query = sdk.query;
+	return _query;
+}
 
 // ── Helpers ──
 
@@ -569,7 +586,8 @@ export default function (pi: ExtensionAPI) {
 					let toolUses: string[] = [];
 
 					try {
-						const conversation = query({ prompt: task.prompt, options: taskOptions });
+						const queryFn = await getQuery();
+						const conversation = queryFn({ prompt: task.prompt, options: taskOptions });
 
 						for await (const message of conversation) {
 							if (signal?.aborted) break;
@@ -817,7 +835,8 @@ export default function (pi: ExtensionAPI) {
 			emitUpdate();
 
 			try {
-				const conversation = query({ prompt, options });
+				const queryFn = await getQuery();
+				const conversation = queryFn({ prompt, options });
 
 				for await (const message of conversation) {
 					if (signal?.aborted) break;
