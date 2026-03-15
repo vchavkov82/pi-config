@@ -163,8 +163,17 @@ export default function panelAgentsExtension(pi: ExtensionAPI) {
         const roleBlock = params.systemPrompt
           ? `\n\n${params.systemPrompt}`
           : "";
+
+        // Prepend /skill:name for each skill so pi expands them inline in the
+        // user message. This is far more effective than --skill which adds to
+        // the system prompt where it gets buried in long sessions.
+        const skillPrefix = effectiveSkills
+          ? effectiveSkills.split(",").map((s) => s.trim()).filter(Boolean)
+              .map((s) => `/skill:${s}`).join("\n") + "\n\n"
+          : "";
+
         const fullTask =
-          `${roleBlock}\n\n${modeHint}\n\n${params.task}\n\n${summaryInstruction}`;
+          `${skillPrefix}${roleBlock}\n\n${modeHint}\n\n${params.task}\n\n${summaryInstruction}`;
 
         // Build pi command
         // Default: fresh session. The caller passes context in the task message.
@@ -186,15 +195,9 @@ export default function panelAgentsExtension(pi: ExtensionAPI) {
           }
         }
 
-        if (effectiveSkills) {
-          for (const skill of effectiveSkills.split(",").map((s) => s.trim()).filter(Boolean)) {
-            // Resolve skill names to full paths — pi --skill expects paths, not names
-            const resolved = resolveSkillPath(skill);
-            parts.push("--skill", shellEscape(resolved));
-          }
-        } else {
-          parts.push("--no-skills");
-        }
+        // Skills are loaded via /skill:name in the user message (inline expansion),
+        // not via --skill flag. Disable auto-discovery to keep the sub-agent lean.
+        parts.push("--no-skills");
 
         if (effectiveModel) {
           const model = effectiveThinking
