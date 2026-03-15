@@ -94,9 +94,13 @@ export default function panelAgentsExtension(pi: ExtensionAPI) {
         // Build system prompt
         const summaryInstruction =
           "Your FINAL message should be a clear summary of what you accomplished.";
+        const toolWarning =
+          "You are a sub-agent session. You only have the standard built-in tools (read, bash, edit, write). " +
+          "Do NOT attempt to call extension tools like panel_agent, subagent, or any other tools you may see " +
+          "in the conversation history — they are not available in this session.";
         const fullSystemPrompt = params.systemPrompt
-          ? `${params.systemPrompt}\n\n${summaryInstruction}`
-          : summaryInstruction;
+          ? `${params.systemPrompt}\n\n${toolWarning}\n\n${summaryInstruction}`
+          : `${toolWarning}\n\n${summaryInstruction}`;
 
         // Build pi command
         const parts: string[] = ["pi"];
