@@ -243,7 +243,6 @@ Always pass the extensions needed for the tools the agent uses. Agent `.md` file
 panel_agent({
   name: "Iterate",
   interactive: true,
-  extensions: "~/.pi/agent/extensions/session-artifacts.ts,~/.pi/agent/extensions/todos.ts",
   task: "[describe the bug or change needed]. Context: [what was just built]"
 })
 ```

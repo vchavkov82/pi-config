@@ -182,19 +182,21 @@ export default function panelAgentsExtension(pi: ExtensionAPI) {
         // The branch_summary still gets written to the MAIN session for /tree visibility.
         const parts: string[] = ["pi"];
         parts.push("--session-dir", shellEscape(dirname(sessionFile)));
-        parts.push("--no-extensions");
-
         // Always load panel-done extension so autonomous agents can self-terminate
         const panelDonePath = join(dirname(new URL(import.meta.url).pathname), "panel-done.ts");
-        parts.push("-e", shellEscape(panelDonePath));
 
-        // Load additional extensions (e.g. session-artifacts for write_artifact)
         if (params.extensions) {
+          // Explicit extensions: disable discovery, load only what's specified + panel-done
+          parts.push("--no-extensions");
+          parts.push("-e", shellEscape(panelDonePath));
           for (const ext of params.extensions.split(",").map((s) => s.trim()).filter(Boolean)) {
-            // Expand ~ to homedir — shell won't expand it inside single quotes
             const resolved = ext.startsWith("~") ? join(homedir(), ext.slice(1)) : ext;
             parts.push("-e", shellEscape(resolved));
           }
+        } else {
+          // No extensions specified: let auto-discovery run (full session replica)
+          // Just add panel-done on top
+          parts.push("-e", shellEscape(panelDonePath));
         }
 
         // Skills are loaded via /skill:name in the user message (inline expansion).
