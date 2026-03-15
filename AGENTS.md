@@ -211,10 +211,10 @@ The `agent` parameter loads defaults from `~/.pi/agent/agents/<name>.md` — sam
 
 ```typescript
 // Use existing agent definitions — same configs as subagents, full transparency
-panel_agent({ name: "🔍 Scout", agent: "scout", interactive: false, task: "Analyze the codebase..." })
-panel_agent({ name: "⚡ Worker", agent: "worker", interactive: false, task: "Implement TODO-xxxx..." })
-panel_agent({ name: "🔎 Reviewer", agent: "reviewer", interactive: false, task: "Review feature branch..." })
-panel_agent({ name: "🔬 Researcher", agent: "researcher", interactive: false, task: "Research [topic]..." })
+panel_agent({ name: "🔍 Scout", agent: "scout", interactive: false, extensions: "~/.pi/agent/extensions/session-artifacts.ts,~/.pi/agent/extensions/todos.ts", task: "Analyze the codebase..." })
+panel_agent({ name: "⚡ Worker", agent: "worker", interactive: false, extensions: "~/.pi/agent/extensions/session-artifacts.ts,~/.pi/agent/extensions/todos.ts", task: "Implement TODO-xxxx..." })
+panel_agent({ name: "🔎 Reviewer", agent: "reviewer", interactive: false, extensions: "~/.pi/agent/extensions/session-artifacts.ts", task: "Review feature branch..." })
+panel_agent({ name: "🔬 Researcher", agent: "researcher", interactive: false, extensions: "~/.pi/agent/extensions/session-artifacts.ts", task: "Research [topic]..." })
 
 // Planner — interactive, no predefined agent file, custom role
 panel_agent({
@@ -230,7 +230,12 @@ panel_agent({
 panel_agent({ name: "⚡ Worker", agent: "worker", model: "anthropic/claude-haiku-4-5", task: "Quick fix..." })
 ```
 
-Always pass `extensions: "~/.pi/agent/extensions/session-artifacts.ts,~/.pi/agent/extensions/todos.ts"` when the agent needs `write_artifact` and `todo`.
+**Required extensions by tool:**
+- `write_artifact` → `~/.pi/agent/extensions/session-artifacts.ts`
+- `todo` → `~/.pi/agent/extensions/todos.ts`
+- `execute_command` + `/answer` → `~/.pi/agent/extensions/execute-command.ts,~/.pi/agent/extensions/answer.ts`
+
+Always pass the extensions needed for the tools the agent uses. Agent `.md` files define which tools are needed — check `tools:` in the frontmatter.
 
 **Panel agents vs subagents:** Panel agents = visible, interactive possible. Subagents = background, headless. Both read the same agent definitions.
 
