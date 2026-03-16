@@ -222,7 +222,8 @@ export default function panelAgentsExtension(pi: ExtensionAPI) {
         // skills + task can easily exceed that when passed as a CLI argument.
         const taskFile = join(tmpdir(), `panel-task-${Date.now()}.md`);
         writeFileSync(taskFile, fullTask, "utf8");
-        parts.push(`@${shellEscape(taskFile)}`);
+        // @ must be outside quotes: @'/path/file' not '@/path/file'
+        parts.push(`@${taskFile}`);
 
         const piCommand = parts.join(" ");
         // Set PANEL_AGENT_NAME env var so panel-done.ts can set the terminal title
