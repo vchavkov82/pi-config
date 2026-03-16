@@ -165,8 +165,6 @@ export default function panelAgentsExtension(pi: ExtensionAPI) {
         const summaryInstruction =
           "Your FINAL assistant message (before calling panel_done or before the user exits) should summarize what you accomplished.";
         // Agent identity: agent .md body > explicit systemPrompt > nothing.
-        // This is the agent's core identity, injected prominently in the message.
-        // It effectively overrides the global AGENTS.md which lives in the system prompt.
         const identity = agentDefs?.body ?? params.systemPrompt ?? null;
         const roleBlock = identity ? `\n\n${identity}` : "";
 
