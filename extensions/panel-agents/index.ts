@@ -420,4 +420,19 @@ export default function panelAgentsExtension(pi: ExtensionAPI) {
       return new Text(text, 0, 0);
     },
   });
+
+  // /iterate command — fork the session into an interactive panel
+  pi.registerCommand("iterate", {
+    description: "Fork session into an interactive panel for focused work (bugfixes, iteration)",
+    handler: async (args, ctx) => {
+      const task = args?.trim() || "";
+
+      // Send a user message that triggers panel_agent with fork
+      const toolCall = task
+        ? `Use panel_agent to start an interactive iterate session. fork: true, name: "Iterate", task: ${JSON.stringify(task)}`
+        : `Use panel_agent to start an interactive iterate session. fork: true, name: "Iterate", task: "The user wants to do some hands-on work. Help them with whatever they need."`;
+
+      pi.sendUserMessage(toolCall);
+    },
+  });
 }
