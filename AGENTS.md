@@ -152,45 +152,15 @@ Only ask questions that require human judgment or preference. Before asking, con
 
 When you have multiple questions, use `/answer` to open a structured Q&A interface — don't make the user answer inline in a wall of text.
 
----
-
-## Main Agent Identity
-
-This section applies to the main Pi agent, not panel agents.
-
 ### Self-Invoke Commands
 
 You can execute slash commands yourself using the `execute_command` tool:
 - **Run `/answer`** after asking multiple questions — don't make the user invoke it
 - **Send follow-up prompts** to yourself
 
-### History & Archives
-
-All agent working files are archived to `~/.pi/history/<project>/` where `<project>` is `basename $PWD`. Nothing is ever lost.
-
-```
-~/.pi/history/<project>/
-  plans/                  # Brainstorm plans (YYYY-MM-DD-name.md)
-  todos/                  # Todo files
-  scouts/                 # Scout context snapshots (YYYY-MM-DD-HHMMSS-context.md)
-  reviews/                # Code reviews (YYYY-MM-DD-HHMMSS-review.md)
-  research/               # Investigator/Claude research (YYYY-MM-DD-HHMMSS-research.md)
-  visual-tests/           # Visual test reports (YYYY-MM-DD-HHMMSS-report.md)
-  claude-sessions.json    # Claude Code session index (last 50)
-```
-
-**Working copies** live in `<project>/.pi/` during chain execution and get cleaned up by workers. **Archives** in `~/.pi/history/` are permanent.
-
-To browse past investigations for a project:
-```bash
-ls ~/.pi/history/$(basename "$PWD")/scouts/
-ls ~/.pi/history/$(basename "$PWD")/reviews/
-ls ~/.pi/history/$(basename "$PWD")/research/
-```
-
 ### Delegate to Subagents
 
-**Prefer panel agent delegation** for any task that involves multiple steps or could benefit from specialized focus.
+**Prefer subagent delegation** for any task that involves multiple steps or could benefit from specialized focus.
 
 #### Available Agents
 
@@ -202,21 +172,21 @@ ls ~/.pi/history/$(basename "$PWD")/research/
 | `researcher` | Deep research using parallel.ai tools (web search, extraction, synthesis) + Claude Code for code analysis | Sonnet 4.6 |
 | `planner` | Interactive brainstorming and planning — clarifies requirements, explores approaches, writes plans, creates todos | Opus 4.6 (medium thinking) |
 
-#### Panel Agents
+#### Subagents
 
-Panel agents spawn visible pi sessions in cmux panels. The user can watch progress in real-time and optionally interact. Autonomous agents call `panel_done` to self-terminate.
+Subagents spawn visible pi sessions in cmux terminals. The user can watch progress in real-time and optionally interact. Autonomous agents call `subagent_done` to self-terminate.
 
 The `agent` parameter loads defaults from `~/.pi/agent/agents/<name>.md`. Model, tools, skills, thinking — all inherited. Explicit params override agent defaults.
 
 ```typescript
 // Use existing agent definitions — full transparency
-panel_agent({ name: "Scout", agent: "scout", interactive: false, task: "Analyze the codebase..." })
-panel_agent({ name: "Worker", agent: "worker", interactive: false, task: "Implement TODO-xxxx..." })
-panel_agent({ name: "Reviewer", agent: "reviewer", interactive: false, task: "Review recent changes..." })
-panel_agent({ name: "Researcher", agent: "researcher", interactive: false, task: "Research [topic]..." })
+subagent({ name: "Scout", agent: "scout", interactive: false, task: "Analyze the codebase..." })
+subagent({ name: "Worker", agent: "worker", interactive: false, task: "Implement TODO-xxxx..." })
+subagent({ name: "Reviewer", agent: "reviewer", interactive: false, task: "Review recent changes..." })
+subagent({ name: "Researcher", agent: "researcher", interactive: false, task: "Research [topic]..." })
 
 // Planner — interactive, loads config from ~/.pi/agent/agents/planner.md
-panel_agent({
+subagent({
   name: "Planner",
   agent: "planner",
   interactive: true,
@@ -224,23 +194,23 @@ panel_agent({
 })
 
 // Iterate — fork the session for focused work, full context preserved
-panel_agent({ name: "Iterate", interactive: true, fork: true, task: "Fix the bug where..." })
+subagent({ name: "Iterate", interactive: true, fork: true, task: "Fix the bug where..." })
 
 // Override agent defaults when needed
-panel_agent({ name: "Worker", agent: "worker", model: "anthropic/claude-haiku-4-5", task: "Quick fix..." })
+subagent({ name: "Worker", agent: "worker", model: "anthropic/claude-haiku-4-5", task: "Quick fix..." })
 ```
 
-Panel agents are full pi sessions — all extensions and skills auto-discover. A panel agent can spawn another panel agent (e.g., planner spawns a scout). Agent `.md` files in `~/.pi/agent/agents/` define model, tools, skills, thinking level.
+Subagents are full pi sessions — all extensions and skills auto-discover. A subagent can spawn another subagent (e.g., planner spawns a scout). Agent `.md` files in `~/.pi/agent/agents/` define model, tools, skills, thinking level.
 
 **Slash commands:**
-- `/plan <what to build>` — start the full planning workflow (investigate → planner panel → execute → review)
-- `/panel <agent> <task>` — spawn a panel agent by agent name (e.g., `/panel scout analyze auth module`)
-- `/iterate [task]` — fork session into interactive panel for quick fixes
+- `/plan <what to build>` — start the full planning workflow (investigate → planner → execute → review)
+- `/subagent <agent> <task>` — spawn a subagent by name (e.g., `/subagent scout analyze auth module`)
+- `/iterate [task]` — fork session into interactive subagent for quick fixes
 
-**Iterate pattern** — for quick fixes and ad-hoc work after a big implementation. The user branches off into a focused panel, fixes a bug or makes a change, then comes back with just the summary. Keeps the main session's context clean.
+**Iterate pattern** — for quick fixes and ad-hoc work after a big implementation. The user branches off into a focused subagent, fixes a bug or makes a change, then comes back with just the summary. Keeps the main session's context clean.
 
 ```typescript
-panel_agent({
+subagent({
   name: "Iterate",
   interactive: true,
   fork: true,
@@ -250,38 +220,12 @@ panel_agent({
 
 `fork: true` copies the current session — the sub-agent has full conversation context. All extensions and skills auto-discover (no `extensions` param = everything). Use when the user says "let me fix this real quick", "iterate on this", or when they want focused work without polluting the main session's context.
 
-
-
 #### When to Delegate
 
 - **Todos ready to execute** → Spawn `scout` then `worker` agents
 - **Code review needed** → Delegate to `reviewer`
 - **Need context first** → Start with `scout`
 - **Web research or external info needed** → Delegate to `researcher` (uses parallel.ai tools for web, Claude Code for code analysis)
-
-#### Chain Patterns
-
-**Standard implementation flow:**
-```typescript
-{ chain: [
-  { agent: "scout", task: "Gather context for [feature]. Key files: [list relevant files]" },
-  { agent: "worker", task: "Implement TODO-xxxx. Use the commit skill to write a polished, descriptive commit message. Mark the todo as done. Plan: ~/.pi/history/<project>/plans/YYYY-MM-DD-feature.md" },
-  { agent: "worker", task: "Implement TODO-yyyy. Use the commit skill to write a polished, descriptive commit message. Mark the todo as done. Plan: ~/.pi/history/<project>/plans/YYYY-MM-DD-feature.md" },
-  { agent: "reviewer", task: "Review implementation. Plan: ~/.pi/history/<project>/plans/YYYY-MM-DD-feature.md" }
-]}
-```
-
-**Quick fix (no plan needed):**
-```typescript
-{ chain: [
-  { agent: "worker", task: "Fix [specific issue]. Use the commit skill to write a polished, descriptive commit message. Mark the todo as done." },
-  { agent: "reviewer" }
-]}
-```
-
-#### Commits, Not Merges
-
-
 
 #### When NOT to Delegate
 
@@ -299,13 +243,11 @@ Skills provide specialized instructions for specific tasks. Load them when the c
 | When... | Load skill... |
 |---------|---------------|
 | Starting work in a new/unfamiliar project, or asked to learn conventions | `learn-codebase` |
-| User wants to brainstorm / build something significant | `plan` (uses panel agents) |
 | Making git commits (always — every commit must be polished and descriptive) | `commit` |
 | Starting, stopping, or configuring Docker/OrbStack services | `dev-environment` |
 | Building web components, pages, or frontend interfaces | `frontend-design` |
 | Working with GitHub | `github` |
 | Asked to simplify/clean up/refactor code | `code-simplifier` |
-| Merge conflicts from upstream or another repo | `manifest-merge-conflicts` |
 | Reading, reviewing, or analyzing a pi session JSONL file | `session-reader` |
 | Adding or configuring an MCP server (global or project-local) | `add-mcp-server` |
 | Running dev servers, test watchers, background tasks, or any process in a separate terminal | `cmux` |

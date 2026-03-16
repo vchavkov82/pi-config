@@ -52,7 +52,7 @@ export function closeSurface(surface: string): void {
 }
 
 /**
- * Poll a surface until the __PANEL_DONE_N__ sentinel appears.
+ * Poll a surface until the __SUBAGENT_DONE_N__ sentinel appears.
  * Returns the process exit code embedded in the sentinel.
  * Throws if the signal is aborted before the sentinel is found.
  */
@@ -65,11 +65,11 @@ export async function pollForExit(
 
   while (true) {
     if (signal.aborted) {
-      throw new Error("Aborted while waiting for panel to finish");
+      throw new Error("Aborted while waiting for subagent to finish");
     }
 
     const screen = readScreen(surface, 5);
-    const match = screen.match(/__PANEL_DONE_(\d+)__/);
+    const match = screen.match(/__SUBAGENT_DONE_(\d+)__/);
     if (match) {
       return parseInt(match[1], 10);
     }

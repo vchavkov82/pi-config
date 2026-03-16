@@ -19,7 +19,7 @@ import { shellEscape, isCmuxAvailable } from "./cmux.ts";
 // --- Helpers ---
 
 function createTestDir(): string {
-  return mkdtempSync(join(tmpdir(), "panel-agents-test-"));
+  return mkdtempSync(join(tmpdir(), "subagents-test-"));
 }
 
 function createSessionFile(dir: string, entries: object[]): string {

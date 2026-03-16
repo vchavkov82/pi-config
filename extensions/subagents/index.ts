@@ -17,8 +17,8 @@ import {
   findLastAssistantMessage,
 } from "./session.ts";
 
-const PanelAgentParams = Type.Object({
-  name: Type.String({ description: "Display name for the cmux panel" }),
+const SubagentParams = Type.Object({
+  name: Type.String({ description: "Display name for the subagent" }),
   task: Type.String({ description: "Task/prompt for the sub-agent" }),
   agent: Type.Optional(
     Type.String({ description: "Agent name to load defaults from (e.g. 'worker', 'scout', 'reviewer'). Reads ~/.pi/agent/agents/<name>.md for model, tools, skills." })
@@ -98,15 +98,15 @@ function formatElapsed(seconds: number): string {
   return `${m}m ${s}s`;
 }
 
-export default function panelAgentsExtension(pi: ExtensionAPI) {
+export default function subagentsExtension(pi: ExtensionAPI) {
   pi.registerTool({
-    name: "panel_agent",
-    label: "Panel Agent",
+    name: "subagent",
+    label: "Subagent",
     description:
-      "Spawn a sub-agent in a dedicated cmux panel with shared session context. " +
+      "Spawn a sub-agent in a dedicated cmux terminal with shared session context. " +
       "The sub-agent branches from the current session, works independently (interactive or autonomous), " +
       "and returns results via a branch summary. Requires cmux to be running (CMUX_SOCKET_PATH must be set).",
-    parameters: PanelAgentParams,
+    parameters: SubagentParams,
 
     async execute(_toolCallId, params, signal, onUpdate, ctx) {
       const interactive = params.interactive !== false; // default true
@@ -125,7 +125,7 @@ export default function panelAgentsExtension(pi: ExtensionAPI) {
           content: [
             {
               type: "text",
-              text: "Error: cmux is not available. Set CMUX_SOCKET_PATH to use panel agents.",
+              text: "Error: cmux is not available. Set CMUX_SOCKET_PATH to use subagents.",
             },
           ],
           details: { error: "cmux not available" },
@@ -138,7 +138,7 @@ export default function panelAgentsExtension(pi: ExtensionAPI) {
           content: [
             {
               type: "text",
-              text: "Error: no session file. Start pi with a persistent session to use panel agents.",
+              text: "Error: no session file. Start pi with a persistent session to use subagents.",
             },
           ],
           details: { error: "no session file" },
@@ -168,9 +168,9 @@ export default function panelAgentsExtension(pi: ExtensionAPI) {
         // the agent sees and actually responds to.
         const modeHint = interactive
           ? "The user will interact with you here. When done, they will exit with Ctrl+D."
-          : "Complete your task autonomously. When finished, call the panel_done tool to close this session.";
+          : "Complete your task autonomously. When finished, call the subagent_done tool to close this session.";
         const summaryInstruction =
-          "Your FINAL assistant message (before calling panel_done or before the user exits) should summarize what you accomplished.";
+          "Your FINAL assistant message (before calling subagent_done or before the user exits) should summarize what you accomplished.";
         // Agent identity: agent .md body > explicit systemPrompt > nothing.
         const identity = agentDefs?.body ?? params.systemPrompt ?? null;
         const roleBlock = identity ? `\n\n${identity}` : "";
@@ -192,11 +192,11 @@ export default function panelAgentsExtension(pi: ExtensionAPI) {
         } else {
           parts.push("--session-dir", shellEscape(dirname(sessionFile)));
         }
-        // Always load panel-done on top of whatever extensions auto-discover.
-        // Panel agents are full pi sessions — same extensions, same skills.
-        // This means a panel agent CAN spawn another panel agent (planner → scout).
-        const panelDonePath = join(dirname(new URL(import.meta.url).pathname), "panel-done.ts");
-        parts.push("-e", shellEscape(panelDonePath));
+        // Always load subagent-done on top of whatever extensions auto-discover.
+        // Subagents are full pi sessions — same extensions, same skills.
+        // This means a subagent CAN spawn another subagent (planner → scout).
+        const subagentDonePath = join(dirname(new URL(import.meta.url).pathname), "subagent-done.ts");
+        parts.push("-e", shellEscape(subagentDonePath));
 
         if (effectiveModel) {
           const model = effectiveThinking
@@ -226,13 +226,13 @@ export default function panelAgentsExtension(pi: ExtensionAPI) {
           }
         }
 
-        const taskFile = join(tmpdir(), `panel-task-${Date.now()}.md`);
+        const taskFile = join(tmpdir(), `subagent-task-${Date.now()}.md`);
         writeFileSync(taskFile, fullTask, "utf8");
         parts.push(`@${taskFile}`);
 
         const piCommand = parts.join(" ");
-        // Set PANEL_AGENT_NAME env var so panel-done.ts can set the terminal title
-        const command = `PANEL_AGENT_NAME=${shellEscape(params.name)} ${piCommand}; rm -f ${shellEscape(taskFile)}; echo '__PANEL_DONE_'$?'__'`;
+        // Set SUBAGENT_NAME env var so subagent-done.ts can set the terminal title
+        const command = `SUBAGENT_NAME=${shellEscape(params.name)} ${piCommand}; rm -f ${shellEscape(taskFile)}; echo '__SUBAGENT_DONE_'$?'__'`;
 
         // Send to surface
         sendCommand(surface, command);
@@ -320,14 +320,14 @@ export default function panelAgentsExtension(pi: ExtensionAPI) {
 
         if (signal?.aborted) {
           return {
-            content: [{ type: "text", text: "Panel agent cancelled." }],
+            content: [{ type: "text", text: "Subagent cancelled." }],
             details: { error: "cancelled" },
           };
         }
 
         const message = err?.message ?? String(err);
         return {
-          content: [{ type: "text", text: `Panel agent error: ${message}` }],
+          content: [{ type: "text", text: `Subagent error: ${message}` }],
           details: { error: message },
         };
       }
@@ -365,7 +365,7 @@ export default function panelAgentsExtension(pi: ExtensionAPI) {
         if (interactive) {
           text +=
             "\n" +
-            theme.fg("accent", `Switch to the "${name}" panel. `) +
+            theme.fg("accent", `Switch to the "${name}" terminal. `) +
             theme.fg("dim", "Exit (Ctrl+D) to return.");
         } else {
           const taskPreview: string = details?.task ?? "";
@@ -420,25 +420,25 @@ export default function panelAgentsExtension(pi: ExtensionAPI) {
     },
   });
 
-  // /iterate command — fork the session into an interactive panel
+  // /iterate command — fork the session into an interactive subagent
   pi.registerCommand("iterate", {
-    description: "Fork session into an interactive panel for focused work (bugfixes, iteration)",
+    description: "Fork session into an interactive subagent for focused work (bugfixes, iteration)",
     handler: async (args, ctx) => {
       const task = args?.trim() || "";
       const toolCall = task
-        ? `Use panel_agent to start an interactive iterate session. fork: true, name: "Iterate", task: ${JSON.stringify(task)}`
-        : `Use panel_agent to start an interactive iterate session. fork: true, name: "Iterate", task: "The user wants to do some hands-on work. Help them with whatever they need."`;
+        ? `Use subagent to start an interactive iterate session. fork: true, name: "Iterate", task: ${JSON.stringify(task)}`
+        : `Use subagent to start an interactive iterate session. fork: true, name: "Iterate", task: "The user wants to do some hands-on work. Help them with whatever they need."`;
       pi.sendUserMessage(toolCall);
     },
   });
 
-  // /panel command — spawn a panel agent by name
-  pi.registerCommand("panel", {
-    description: "Spawn a panel agent: /panel <agent> <task>",
+  // /subagent command — spawn a subagent by name
+  pi.registerCommand("subagent", {
+    description: "Spawn a subagent: /subagent <agent> <task>",
     handler: async (args, ctx) => {
       const trimmed = (args ?? "").trim();
       if (!trimmed) {
-        ctx.ui.notify("Usage: /panel <agent> [task]", "warning");
+        ctx.ui.notify("Usage: /subagent <agent> [task]", "warning");
         return;
       }
 
@@ -453,7 +453,7 @@ export default function panelAgentsExtension(pi: ExtensionAPI) {
       }
 
       const taskText = task || `You are the ${agentName} agent. Wait for instructions.`;
-      const toolCall = `Use panel_agent with agent: "${agentName}", name: "${agentName[0].toUpperCase() + agentName.slice(1)}", interactive: false, task: ${JSON.stringify(taskText)}`;
+      const toolCall = `Use subagent with agent: "${agentName}", name: "${agentName[0].toUpperCase() + agentName.slice(1)}", interactive: false, task: ${JSON.stringify(taskText)}`;
       pi.sendUserMessage(toolCall);
     },
   });
@@ -468,7 +468,7 @@ export default function panelAgentsExtension(pi: ExtensionAPI) {
         return;
       }
 
-      // Load the plan skill from the panel-agents extension directory
+      // Load the plan skill from the subagents extension directory
       const planSkillPath = join(dirname(new URL(import.meta.url).pathname), "plan-skill.md");
       let content = readFileSync(planSkillPath, "utf8");
       content = content.replace(/^---\n[\s\S]*?\n---\n*/, "");

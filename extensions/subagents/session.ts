@@ -98,7 +98,7 @@ export function appendBranchSummary(
  */
 export function copySessionFile(sessionFile: string, destDir: string): string {
   const id = randomBytes(4).toString("hex");
-  const dest = join(destDir, `panel-${id}.jsonl`);
+  const dest = join(destDir, `subagent-${id}.jsonl`);
   copyFileSync(sessionFile, dest);
   return dest;
 }

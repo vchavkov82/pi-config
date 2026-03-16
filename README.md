@@ -33,13 +33,14 @@ cd ~/.pi/agent && git pull
 
 ## Architecture
 
-This config uses **panel agents** — visible pi sessions spawned in [cmux](https://github.com/nicobailon/cmux) terminal panels. Each panel agent is a full pi session with its own identity, tools, and skills. The user can watch agents work in real-time and interact when needed.
+This config uses **subagents** — visible pi sessions spawned in cmux terminals. Each subagent is a full pi session with its own identity, tools, and skills. The user can watch agents work in real-time and interact when needed.
+
 ### Key Concepts
 
-- **Panel agents** — visible cmux panels running pi. Autonomous agents self-terminate via `panel_done`. Interactive agents wait for the user.
+- **Subagents** — visible cmux terminals running pi. Autonomous agents self-terminate via `subagent_done`. Interactive agents wait for the user.
 - **Agent definitions** (`agents/*.md`) — one source of truth for model, tools, skills, and identity per role.
-- **Plan workflow** — `/plan` spawns an interactive planner panel, then orchestrates workers and reviewers.
-- **Iterate pattern** — `/iterate` forks the session into a panel for quick fixes without polluting the main context.
+- **Plan workflow** — `/plan` spawns an interactive planner subagent, then orchestrates workers and reviewers.
+- **Iterate pattern** — `/iterate` forks the session into a subagent for quick fixes without polluting the main context.
 
 ---
 
@@ -78,7 +79,7 @@ Loaded on-demand when the context matches.
 
 | Extension | What it provides |
 |-----------|------------------|
-| **panel-agents/** | `panel_agent` tool + `/plan`, `/panel`, `/iterate` commands — spawns agents in cmux panels |
+| **subagents/** | `subagent` tool + `/plan`, `/subagent`, `/iterate` commands — spawns agents in cmux terminals |
 | **answer.ts** | `/answer` command + `Ctrl+.` — extracts questions into interactive Q&A UI |
 | **claude-tool/** | `claude` tool — invoke Claude Code for autonomous tasks |
 | **execute-command.ts** | `execute_command` tool — lets the agent self-invoke slash commands |
@@ -93,9 +94,9 @@ Loaded on-demand when the context matches.
 
 | Command | Description |
 |---------|-------------|
-| `/plan <description>` | Start a planning session — spawns planner panel, then orchestrates execution |
-| `/panel <agent> <task>` | Spawn any agent as a panel (e.g., `/panel scout analyze the auth module`) |
-| `/iterate [task]` | Fork session into interactive panel for quick fixes |
+| `/plan <description>` | Start a planning session — spawns planner subagent, then orchestrates execution |
+| `/subagent <agent> <task>` | Spawn a subagent (e.g., `/subagent scout analyze the auth module`) |
+| `/iterate [task]` | Fork session into interactive subagent for quick fixes |
 | `/answer` | Extract questions into interactive Q&A |
 | `/todos` | Visual todo manager |
 | `/cost` | API cost summary |

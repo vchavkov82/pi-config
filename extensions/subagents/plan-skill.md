@@ -1,17 +1,17 @@
 ---
 name: plan
 description: >
-  Panel-based planning workflow. Spawns an interactive planner sub-agent
-  in a cmux panel with shared session context. Use when asked to "plan",
+  Planning workflow. Spawns an interactive planner sub-agent
+  in a cmux terminal with shared session context. Use when asked to "plan",
   "brainstorm", "I want to build X", or "let's design". Requires the
-  panel-agents extension and cmux.
+  subagents extension and cmux.
 ---
 
 # Plan
 
-A panel-based planning workflow that offloads brainstorming and plan creation to a dedicated interactive panel, keeping the main session clean for orchestration.
+A planning workflow that offloads brainstorming and plan creation to a dedicated interactive subagent, keeping the main session clean for orchestration.
 
-**Announce at start:** "Let me investigate first, then I'll open a dedicated planning panel where we can work through this together."
+**Announce at start:** "Let me investigate first, then I'll open a dedicated planning session where we can work through this together."
 
 ---
 
@@ -20,7 +20,7 @@ A panel-based planning workflow that offloads brainstorming and plan creation to
 ```
 Phase 1: Quick Investigation (main session)
     ↓
-Phase 2: Spawn Planner Panel (interactive — user collaborates here)
+Phase 2: Spawn Planner Subagent (interactive — user collaborates here)
     ↓
 Phase 3: Review Plan & Todos (main session)
     ↓
@@ -43,10 +43,10 @@ cat package.json 2>/dev/null | head -30
 
 Spend 30–60 seconds. The goal is to give the planner useful context — not to do a full scout.
 
-**If deeper context is needed** (large codebase, unfamiliar architecture), spawn an autonomous scout panel first:
+**If deeper context is needed** (large codebase, unfamiliar architecture), spawn an autonomous scout subagent first:
 
 ```typescript
-panel_agent({
+subagent({
   name: "Scout",
   agent: "scout",
   interactive: false,
@@ -54,16 +54,16 @@ panel_agent({
 })
 ```
 
-Read the scout's summary from the panel result before proceeding.
+Read the scout's summary from the subagent result before proceeding.
 
 ---
 
-## Phase 2: Spawn Planner Panel
+## Phase 2: Spawn Planner Subagent
 
 Spawn the interactive planner. The `planner` agent definition has the full brainstorming workflow built in — clarify, explore, validate design, write plan, create todos.
 
 ```typescript
-panel_agent({
+subagent({
   name: "Planner",
   agent: "planner",
   interactive: true,
@@ -74,13 +74,13 @@ Context from investigation:
 })
 ```
 
-**The user works with the planner in the panel.** The main session waits. When the user is done, they press Ctrl+D and the panel's summary is returned to the main session.
+**The user works with the planner in the subagent.** The main session waits. When the user is done, they press Ctrl+D and the subagent.s summary is returned to the main session.
 
 ---
 
 ## Phase 3: Review Plan & Todos
 
-Once the panel closes, read the plan and todos:
+Once the subagent closes, read the plan and todos:
 
 ```typescript
 todo({ action: "list" })
@@ -97,7 +97,7 @@ Spawn a scout first for context, then workers sequentially:
 
 ```typescript
 // 1. Scout gathers context
-panel_agent({
+subagent({
   name: "Scout",
   agent: "scout",
   interactive: false,
@@ -105,7 +105,7 @@ panel_agent({
 })
 
 // 2. Workers execute todos sequentially — one at a time
-panel_agent({
+subagent({
   name: "Worker",
   agent: "worker",
   interactive: false,
@@ -113,7 +113,7 @@ panel_agent({
 })
 
 // Check result, then next todo
-panel_agent({
+subagent({
   name: "Worker",
   agent: "worker",
   interactive: false,
@@ -130,7 +130,7 @@ panel_agent({
 After all todos are complete:
 
 ```typescript
-panel_agent({
+subagent({
   name: "Reviewer",
   agent: "reviewer",
   interactive: false,
