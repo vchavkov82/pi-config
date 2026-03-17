@@ -15,7 +15,8 @@
     },
     "git:github.com/pasky/chrome-cdp-skill",
     "git:github.com/HazAT/glimpse",
-    "git:github.com/HazAT/pi-interactive-subagents"
+    "git:github.com/HazAT/pi-interactive-subagents",
+    "git:github.com/HazAT/pi-autoresearch"
   ],
   "hideThinkingBlock": false,
   "extensions": [
