@@ -56,6 +56,7 @@ Specialized roles with baked-in identity, workflow, and review rubrics.
 | **reviewer** | Opus 4.6 | Reviews code for quality, security, correctness (review rubric baked in) |
 | **researcher** | Sonnet 4.6 | Deep research using parallel.ai tools + Claude Code for code analysis |
 | **visual-tester** | Sonnet 4.6 | Visual QA — navigates web UIs via Chrome CDP, spots issues, produces reports |
+| **autoresearch** | Opus 4.6 | Autonomous experiment loop — runs, measures, and optimizes iteratively |
 
 ## Skills
 
@@ -67,6 +68,7 @@ Loaded on-demand when the context matches.
 | **code-simplifier** | Simplifying or cleaning up code |
 | **frontend-design** | Building web components, pages, or apps |
 | **github** | Working with GitHub via `gh` CLI |
+| **iterate-pr** | Iterating on a PR until CI passes |
 | **learn-codebase** | Onboarding to a new project, checking conventions |
 | **session-reader** | Reading and analyzing pi session JSONL files |
 | **skill-creator** | Scaffolding new agent skills |
@@ -78,16 +80,13 @@ Loaded on-demand when the context matches.
 
 | Extension | What it provides |
 |-----------|------------------|
-| **subagents/** | `subagent` tool + `/plan`, `/subagent`, `/iterate` commands — spawns agents in cmux terminals |
-| **answer.ts** | `/answer` command + `Ctrl+.` — extracts questions into interactive Q&A UI |
+| **answer/** | `/answer` command + `Ctrl+.` — extracts questions into interactive Q&A UI |
 | **claude-tool/** | `claude` tool — invoke Claude Code for autonomous tasks |
-| **execute-command.ts** | `execute_command` tool — lets the agent self-invoke slash commands |
-| **session-artifacts.ts** | `write_artifact` tool — session-scoped artifact storage |
-| **todos.ts** | `/todos` command + `todo` tool — file-based todo management |
-| **cost.ts** | `/cost` command — API cost summary |
 | **cmux/** | cmux integration — notifications, sidebar, workspace tools |
-| **ghostty.ts** | Ghostty terminal title + progress bar integration |
-| **watchdog.ts** | Monitors agent behavior |
+| **cost/** | `/cost` command — API cost summary |
+| **execute-command/** | `execute_command` tool — lets the agent self-invoke slash commands |
+| **todos/** | `/todos` command + `todo` tool — file-based todo management |
+| **watchdog/** | Monitors agent behavior |
 
 ## Commands
 
@@ -106,8 +105,11 @@ Installed via `pi install`, managed in `settings.json`.
 
 | Package | Description |
 |---------|-------------|
+| [pi-interactive-subagents](https://github.com/HazAT/pi-interactive-subagents) | Subagent tools + `/plan`, `/subagent`, `/iterate` commands |
 | [pi-parallel](https://github.com/HazAT/pi-parallel) | Parallel web search, extract, research, and enrich tools |
 | [pi-smart-sessions](https://github.com/HazAT/pi-smart-sessions) | AI-generated session names |
+| [pi-autoresearch](https://github.com/HazAT/pi-autoresearch) | Autonomous experiment loop with dashboard |
+| [pi-mcp-adapter](https://github.com/nicobailon/pi-mcp-adapter) | MCP server integration |
 | [glimpse](https://github.com/HazAT/glimpse) | Native macOS UI — dialogs, forms, visualizations |
 | [chrome-cdp-skill](https://github.com/pasky/chrome-cdp-skill) | Chrome DevTools Protocol CLI for visual testing |
 
@@ -115,7 +117,7 @@ Installed via `pi install`, managed in `settings.json`.
 
 ## Credits
 
-Extensions from [mitsuhiko/agent-stuff](https://github.com/mitsuhiko/agent-stuff): `answer.ts`, `todos.ts`
+Extensions from [mitsuhiko/agent-stuff](https://github.com/mitsuhiko/agent-stuff): `answer`, `todos`
 
 Skills from [mitsuhiko/agent-stuff](https://github.com/mitsuhiko/agent-stuff): `commit`, `github`
 
