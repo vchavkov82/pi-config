@@ -102,7 +102,7 @@ export default function (pi: ExtensionAPI) {
     }
 
     const usage = ctx.getContextUsage();
-    if (usage && usage.tokens > 0) {
+    if (usage && usage.tokens != null && usage.tokens > 0) {
       setStatus("pi_tokens", formatTokens(usage.tokens), "number", BLUE);
     }
   });
@@ -128,7 +128,7 @@ export default function (pi: ExtensionAPI) {
 
     // Update final token count
     const usage = ctx.getContextUsage();
-    if (usage && usage.tokens > 0) {
+    if (usage && usage.tokens != null && usage.tokens > 0) {
       setStatus("pi_tokens", formatTokens(usage.tokens), "number", BLUE);
     }
 
@@ -157,7 +157,7 @@ export default function (pi: ExtensionAPI) {
 
     // Update token count
     const usage = ctx.getContextUsage();
-    if (usage && usage.tokens > 0) {
+    if (usage && usage.tokens != null && usage.tokens > 0) {
       setStatus("pi_tokens", formatTokens(usage.tokens), "number", BLUE);
     }
   });

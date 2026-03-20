@@ -16,6 +16,10 @@ export default function (pi: ExtensionAPI) {
 - Send follow-up prompts to yourself
 
 The command/message appears in the conversation as a user message.`,
+    promptSnippet:
+      "Execute a slash command or send a message as if the user typed it. " +
+      "Use to self-invoke /answer after asking questions, run /reload after creating skills, or send follow-up prompts.",
+
     parameters: Type.Object({
       command: Type.String({ 
         description: "The command or message to execute (e.g., '/answer', '/reload', or any text)" 
