@@ -50,7 +50,7 @@ import {
 	Text,
 	TUI,
 	fuzzyMatch,
-	getEditorKeybindings,
+	getKeybindings,
 	matchesKey,
 	truncateToWidth,
 	visibleWidth,
@@ -399,7 +399,7 @@ class TodoSelectorComponent extends Container implements Focusable {
 	}
 
 	handleInput(keyData: string): void {
-		const kb = getEditorKeybindings();
+		const kb = getKeybindings();
 		if (kb.matches(keyData, "tui.select.up")) {
 			if (this.filteredTodos.length === 0) return;
 			this.selectedIndex = this.selectedIndex === 0 ? this.filteredTodos.length - 1 : this.selectedIndex - 1;
@@ -575,7 +575,7 @@ class TodoDetailOverlayComponent {
 	}
 
 	handleInput(keyData: string): void {
-		const kb = getEditorKeybindings();
+		const kb = getKeybindings();
 		if (kb.matches(keyData, "tui.select.cancel")) {
 			this.onAction("back");
 			return;
