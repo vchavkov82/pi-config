@@ -14,7 +14,7 @@
 import type { ExtensionAPI, ExtensionContext } from "@mariozechner/pi-coding-agent";
 import { keyHint } from "@mariozechner/pi-coding-agent";
 import { Type } from "@sinclair/typebox";
-import { Text, truncateToWidth, visibleWidth } from "@mariozechner/pi-tui";
+import { Box, Text, truncateToWidth, visibleWidth } from "@mariozechner/pi-tui";
 import { dirname, join } from "node:path";
 import { existsSync, unlinkSync, readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
@@ -377,12 +377,14 @@ export default function (pi: ExtensionAPI) {
 
     return {
       render(width: number): string[] {
-        const name = details.name ?? "Claude Code";
+        const error = details.error;
+        const bgFn = error
+          ? (text: string) => theme.bg("toolErrorBg", text)
+          : (text: string) => theme.bg("toolSuccessBg", text);
+        const icon = error ? theme.fg("error", "✗") : theme.fg("success", "✓");
         const elapsed = details.elapsed != null
           ? (details.elapsed < 60 ? `${details.elapsed}s` : `${Math.floor(details.elapsed / 60)}m${details.elapsed % 60}s`)
           : "?";
-        const error = details.error;
-        const icon = error ? theme.fg("error", "✗") : theme.fg("success", "✓");
         const header = `${icon} ${theme.fg("toolTitle", theme.bold("Claude Code"))} ${theme.fg("dim", `— ${elapsed}`)}`;
 
         const rawContent = typeof message.content === "string" ? message.content : "";
@@ -390,21 +392,26 @@ export default function (pi: ExtensionAPI) {
 
         if (options.expanded) {
           for (const line of rawContent.split("\n")) {
-            contentLines.push(line.slice(0, width - 4));
+            contentLines.push(line.slice(0, width - 6));
           }
         } else {
-          const lines = rawContent.split("\n");
-          const preview = lines.slice(0, 5);
-          for (const line of preview) {
-            contentLines.push(theme.fg("dim", line.slice(0, width - 4)));
-          }
-          if (lines.length > 5) {
-            contentLines.push(theme.fg("muted", `… ${lines.length - 5} more lines`));
+          if (rawContent) {
+            const lines = rawContent.split("\n");
+            const preview = lines.slice(0, 5);
+            for (const line of preview) {
+              contentLines.push(theme.fg("dim", line.slice(0, width - 6)));
+            }
+            if (lines.length > 5) {
+              contentLines.push(theme.fg("muted", `… ${lines.length - 5} more lines`));
+            }
           }
           contentLines.push(theme.fg("muted", keyHint("app.tools.expand", "to expand")));
         }
 
-        return contentLines;
+        // Render via Box for background + padding, with blank line above for separation
+        const box = new Box(1, 1, bgFn);
+        box.addChild(new Text(contentLines.join("\n"), 0, 0));
+        return ["", ...box.render(width)];
       },
     };
   });
