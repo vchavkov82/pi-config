@@ -1,7 +1,7 @@
 import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
+import { getAgentDir } from "@mariozechner/pi-coding-agent";
 import * as fs from "node:fs";
 import * as path from "node:path";
-import * as os from "node:os";
 
 interface CostEntry {
   cost: number;
@@ -72,7 +72,7 @@ export default function (pi: ExtensionAPI) {
       }
 
       const cutoff = getCutoffDate(days);
-      const sessionsDir = path.join(os.homedir(), ".pi", "agent", "sessions");
+      const sessionsDir = path.join(getAgentDir(), "sessions");
       const tmpDir = process.env.TMPDIR ?? "/tmp";
 
       // Collect main sessions
