@@ -181,18 +181,19 @@ You can execute slash commands yourself using the `execute_command` tool:
 
 | Agent | Purpose | Model |
 |-------|---------|-------|
+| `spec` | Interactive spec agent — clarifies WHAT to build (intent, requirements, effort level, ISC). Produces a spec artifact. | Opus 4.6 (medium thinking) |
+| `planner` | Interactive planning agent — takes a spec and figures out HOW to build it. Explores approaches, validates design, writes plans, creates todos. | Opus 4.6 (medium thinking) |
 | `scout` | Fast codebase reconnaissance | Haiku (fast, cheap) |
-| `worker` | Implements tasks from todos, makes polished commits (always using the `commit` skill), and closes the todo | Sonnet 4.6 |
+| `worker` | Implements tasks from todos, makes polished commits (always using the `commit` skill), and closes the todo. Reports back if a todo is missing examples/references. | Sonnet 4.6 |
 | `reviewer` | Reviews code for quality/security | Codex 5.3 |
 | `researcher` | Deep research using Claude Code as a self-driving investigation agent (web search, cloning repos, downloading links, trying things out) | Sonnet 4.6 |
-| `planner` | Interactive brainstorming and planning — clarifies requirements, explores approaches, writes plans, creates todos | Opus 4.6 (medium thinking) |
 
 #### Orchestration Mindset
 
 Subagents are **specialists in a system**. Each agent exists for a specific purpose — scouting, implementing, reviewing, researching, planning. When you spawn a subagent, it should:
 
 - **Focus on what's asked** — do the task, do it well, move on
-- **Not expand scope** — a scout doesn't implement, a worker doesn't redesign, a reviewer doesn't rewrite
+- **Not expand scope** — a spec agent doesn't plan architecture, a planner doesn't re-clarify requirements, a scout doesn't implement, a worker doesn't redesign, a reviewer doesn't rewrite
 - **Trust the system** — other agents handle what's outside your role
 - **Deliver and exit** — produce your artifact/commit/review, then terminate cleanly
 
@@ -211,8 +212,11 @@ subagent({ name: "Worker", agent: "worker", task: "Implement TODO-xxxx..." })
 subagent({ name: "Reviewer", agent: "reviewer", task: "Review recent changes..." })
 subagent({ name: "Researcher", agent: "researcher", task: "Research [topic]..." })
 
-// Planner — loads config from ~/.pi/agent/agents/planner.md
-subagent({ name: "Planner", agent: "planner", task: "Plan: [description]. Context: [relevant info]" })
+// Spec — clarifies WHAT to build (interactive, user collaborates)
+subagent({ name: "📝 Spec", agent: "spec", interactive: true, task: "Define spec: [description]. Context: [relevant info]" })
+
+// Planner — figures out HOW to build it (interactive, receives spec as input)
+subagent({ name: "💬 Planner", agent: "planner", interactive: true, task: "Plan implementation for spec: [spec artifact path]. Context: [relevant info]" })
 
 // Iterate — fork the session for focused work, full context preserved
 subagent({ name: "Iterate", fork: true, task: "Fix the bug where..." })
@@ -229,10 +233,10 @@ subagent({ name: "Scout: DB", agent: "scout", task: "Map database schema" })
 
 Subagents are full pi sessions — all extensions and skills auto-discover. A subagent can spawn another subagent (e.g., planner spawns a scout). Agent `.md` files in `~/.pi/agent/agents/` define model, tools, skills, thinking level.
 
-**`auto-exit: true` frontmatter field** — Set in agent definition `.md` files to make the agent auto-shutdown when its turn ends, without needing to call `subagent_done`. Use for autonomous agents (scout, worker, reviewer). Don't use for interactive agents (planner). Safety: if the user sends any input during the session, auto-exit is permanently disabled for that session.
+**`auto-exit: true` frontmatter field** — Set in agent definition `.md` files to make the agent auto-shutdown when its turn ends, without needing to call `subagent_done`. Use for autonomous agents (scout, worker, reviewer). Don't use for interactive agents (spec, planner). Safety: if the user sends any input during the session, auto-exit is permanently disabled for that session.
 
 **Slash commands:**
-- `/plan <what to build>` — start the full planning workflow (investigate → planner → execute → review)
+- `/plan <what to build>` — start the full planning workflow (investigate → spec → planner → execute → review)
 - `/subagent <agent> <task>` — spawn a subagent by name (e.g., `/subagent scout analyze auth module`)
 - `/iterate [task]` — fork session for quick fixes
 
@@ -250,7 +254,9 @@ subagent({
 
 #### When to Delegate
 
+- **New feature or unclear requirements** → Start with `spec` to clarify WHAT, then `planner` for HOW
 - **Todos ready to execute** → Spawn `scout` then `worker` agents. **If the project defines a specialized agent** (e.g. `fullstack` for a web project), prefer it over generic `worker` — it has project-specific context, docs references, and often a stronger model.
+- **Worker reports missing context** → Provide the missing examples/references, update the todo, re-spawn the worker
 - **Code review needed** → Delegate to `reviewer`
 - **Need context first** → Start with `scout`
 - **Web research or external info needed** → Delegate to `researcher` (uses Claude Code as a self-driving investigation agent)

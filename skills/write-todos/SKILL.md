@@ -9,7 +9,7 @@ Write todos that a worker agent can execute without access to the planning conve
 
 ## Why This Matters
 
-Workers implement exactly what's described. If a todo contains a code sketch using plain classes, the worker builds plain classes — even if the plan says "use Effect v4 for everything." Architectural intent that only lives in the plan's prose gets lost. Every constraint must be **in the todo body itself**.
+Workers implement exactly what's described. If a todo contains a code sketch using plain classes, the worker builds plain classes — even if the plan says "use functional code for everything." Architectural intent that only lives in the plan's prose gets lost. Every constraint must be **in the todo body itself**.
 
 ## Todo Structure
 
