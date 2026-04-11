@@ -259,6 +259,15 @@ export default function (pi: ExtensionAPI) {
     runningClaude.clear();
   });
 
+  // Respect PI_DENY_TOOLS (set by subagent launcher from deny-tools frontmatter)
+  const deniedTools = new Set(
+    (process.env.PI_DENY_TOOLS ?? "")
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean),
+  );
+  if (deniedTools.has("claude")) return;
+
   pi.registerTool({
     name: "claude",
     label: "Claude Code",
