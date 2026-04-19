@@ -41,9 +41,16 @@ Create `~/.pi/agent/auth.json`:
 ```json
 {
   "anthropic": "sk-ant-...",
-  "openai": "sk-..."
+  "openai-codex": {
+    "type": "oauth",
+    "access": "...",
+    "refresh": "...",
+    "expires": 0
+  }
 }
 ```
+
+`anthropic` is used by the checked-in `models.json` provider override, which routes Anthropic models through `http://localhost:6655/anthropic`.
 
 `auth.json` is gitignored and will not be committed.
 
@@ -199,13 +206,13 @@ The default model configured in `settings.json` (e.g. `claude-sonnet-latest` or 
 1. Run `/model` inside pi to open the model picker
 2. Select any model shown as available
 3. Optionally update `defaultModel` in `~/.pi/agent/settings.json` to a model you have confirmed access to
+4. If Anthropic models still fail, verify the local proxy at `http://localhost:6655/anthropic` is running
 
 **Notes:**
 
-- Access to specific Claude models depends on your Anthropic API plan and key permissions
-- If using another provider (OpenAI, etc.), make sure the matching key is present in `auth.json`
-- If you have access to multiple providers, switching provider via `/model` may resolve the issue without changing your key
-- Where possible, avoid pinning a specific model version in `settings.json`; use stable aliases so upgrades do not require a config change
+- Access to specific Claude models depends on your Anthropic API key and the local Anthropic-compatible proxy configuration
+- If using another provider (OpenAI Codex, etc.), make sure the matching credentials are present in `auth.json`
+- If you have access to multiple providers, switching provider via `/model` may resolve the issue without changing auth
 
 ---
 

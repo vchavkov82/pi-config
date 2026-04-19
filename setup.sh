@@ -34,7 +34,7 @@ if [[ ! -f "$SCRIPT_DIR/settings.json" ]]; then
   cat > "$SCRIPT_DIR/settings.json" << 'SETTINGS'
 {
   "defaultProvider": "anthropic",
-  "defaultModel": "claude-opus-4-6",
+  "defaultModel": "claude-haiku-4-5",
   "defaultThinkingLevel": "medium",
   "packages": [
     "../_pi/packages/pi-mcp-adapter",
@@ -89,7 +89,7 @@ fi
 if [[ ! -f "$SCRIPT_DIR/auth.json" ]]; then
   echo ""
   echo "⚠️  No auth.json found — create $SCRIPT_DIR/auth.json with your API keys:"
-  echo '  { "anthropic": "sk-ant-...", "openai": "sk-..." }'
+  echo '  { "anthropic": "sk-ant-...", "openai-codex": { "type": "oauth", ... } }'
 fi
 
 echo ""
