@@ -21,13 +21,12 @@ fi
 
 echo "==> pi-config setup ($SCRIPT_DIR)"
 
-# ── 1. Install pi if missing ────────────────────────────────────────
+# ── 1. Check pi is available ─────────────────────────────────────────
 if ! command -v pi &>/dev/null; then
-  echo "Installing @mariozechner/pi-coding-agent..."
-  npm install -g @mariozechner/pi-coding-agent
-else
-  echo "pi $(pi --version 2>/dev/null || echo '?') already installed"
+  echo "⚠️  pi not found — install it first (npm install -g @mariozechner/pi-coding-agent)"
+  exit 1
 fi
+echo "pi $(pi --version 2>/dev/null || echo '?') found"
 
 # ── 2. Seed settings.json (skip if exists) ──────────────────────────
 if [[ ! -f "$SCRIPT_DIR/settings.json" ]]; then

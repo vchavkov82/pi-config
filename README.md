@@ -28,7 +28,7 @@ cd ~/.pi/agent && ./setup.sh
 
 ### What `setup.sh` does
 
-1. Installs `pi` globally (`npm install -g @mariozechner/pi-coding-agent`) if missing
+1. Checks that `pi` is installed (fails with a hint if missing)
 2. Seeds a default `settings.json` if none exists
 3. Installs all pi packages (subagents, extensions, tools)
 4. Installs extension npm dependencies
