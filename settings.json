@@ -10,7 +10,10 @@
     "git:github.com/HazAT/pi-interactive-subagents",
     "-git:github.com/HazAT/pi-autoresearch",
     "git:github.com/HazAT/pi-parallel",
-    "git:github.com/badlogic/pi-diff-review"
+    "git:github.com/badlogic/pi-diff-review",
+    "git:github.com/nicobailon/pi-mcp-adapter",
+    "git:github.com/HazAT/glimpse",
+    "git:github.com/HazAT/pi-autoresearch"
   ],
   "hideThinkingBlock": false,
   "extensions": [
