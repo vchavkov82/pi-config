@@ -72,6 +72,7 @@ Example output:
   ]
 }`;
 
+const HAIKU_PROVIDER = "claude-code";
 const HAIKU_MODEL_ID = "claude-haiku-4-5";
 
 /**
@@ -84,7 +85,7 @@ async function selectExtractionModel(
 		getApiKeyAndHeaders: (model: Model<Api>) => Promise<{ ok: true; apiKey?: string; headers?: Record<string, string> } | { ok: false; error: string }>;
 	},
 ): Promise<Model<Api>> {
-	const haikuModel = modelRegistry.find("anthropic", HAIKU_MODEL_ID);
+	const haikuModel = modelRegistry.find(HAIKU_PROVIDER, HAIKU_MODEL_ID);
 	if (haikuModel) {
 		const auth = await modelRegistry.getApiKeyAndHeaders(haikuModel);
 		if (auth.ok) {

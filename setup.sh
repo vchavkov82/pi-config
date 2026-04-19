@@ -33,8 +33,8 @@ if [[ ! -f "$SCRIPT_DIR/settings.json" ]]; then
   echo "Creating default settings.json..."
   cat > "$SCRIPT_DIR/settings.json" << 'SETTINGS'
 {
-  "defaultProvider": "anthropic",
-  "defaultModel": "claude-haiku-4-5",
+  "defaultProvider": "claude-code",
+  "defaultModel": "claude-sonnet-4-6",
   "defaultThinkingLevel": "medium",
   "packages": [
     "../_pi/packages/pi-mcp-adapter",
