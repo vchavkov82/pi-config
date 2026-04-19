@@ -3,6 +3,11 @@
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.4",
   "defaultThinkingLevel": "medium",
+  "enabledModels": [
+    "openai-codex/gpt-5.3-codex",
+    "openai-codex/gpt-5.4",
+    "openai-codex/gpt-5.4-mini"
+  ],
   "packages": [
     "../_pi/packages/pi-smart-sessions",
     "../_pi/packages/chrome-cdp-skill",
