@@ -1,6 +1,6 @@
 {
   "lastChangelogVersion": "0.67.68",
-  "defaultProvider": "claude-code",
+  "defaultProvider": "anthropic",
   "defaultModel": "claude-haiku-4-5",
   "defaultThinkingLevel": "medium",
   "enabledModels": [
