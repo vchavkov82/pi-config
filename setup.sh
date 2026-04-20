@@ -37,7 +37,7 @@ if [[ ! -f "$SCRIPT_DIR/settings.json" ]]; then
   "defaultModel": "claude-sonnet-4-6",
   "defaultThinkingLevel": "medium",
   "enabledModels": [
-    "claude-haiku-latest",
+    "haiku",
     "claude-sonnet-4-6",
     "claude-opus-4-6",
     "openai-codex/gpt-5.3-codex",

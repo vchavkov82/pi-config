@@ -73,7 +73,7 @@ Example output:
 }`;
 
 const HAIKU_PROVIDER = "claude-code";
-const HAIKU_MODEL_ID = "claude-haiku-latest";
+const HAIKU_MODEL_ID = "haiku";
 
 /**
  * Prefer Haiku for extraction (fast, cheap), otherwise fallback to the current model.
