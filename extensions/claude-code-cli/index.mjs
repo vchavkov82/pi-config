@@ -3,6 +3,15 @@ import { streamViaClaudeCode } from '/home/vchavkov/.local/share/mise/installs/n
 
 const MODELS = [
   {
+    id: 'claude-haiku-4-5',
+    name: 'Claude Haiku 4.5 (via Claude Code)',
+    reasoning: false,
+    input: ['text', 'image'],
+    cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 },
+    contextWindow: 1_000_000,
+    maxTokens: 64_000,
+  },
+  {
     id: 'claude-sonnet-4-6',
     name: 'Claude Sonnet 4.6 (via Claude Code)',
     reasoning: true,

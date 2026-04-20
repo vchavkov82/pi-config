@@ -50,7 +50,22 @@ Create `~/.pi/agent/auth.json`:
 }
 ```
 
-`anthropic` is used by the checked-in `models.json` provider override, which routes Anthropic models through `http://localhost:6655/anthropic`.
+Built-in API-key providers still read from `auth.json`, but the checked-in Bosch/SAP Vertex Anthropic providers are registered by `extensions/vertex-anthropic-providers/index.mjs` and read their base URLs plus tokens from environment variables instead.
+
+Supported environment variables:
+
+- Bosch (legacy/current): `BOSCH_ANTHROPIC_BASE_URL` or `BOSCH_ANTHROPIC_VERTEX_BASE_URL`, plus `BOSCH_ANTHROPIC_AUTH_TOKEN` or `BOSCH_ANTHROPIC_API_KEY`
+- Bosch fallback for older shells: `ANTHROPIC_VERTEX_BASE_URL`, plus `ANTHROPIC_AUTH_TOKEN` or `ANTHROPIC_API_KEY`
+- SAP: `SAP_ANTHROPIC_BASE_URL` or `SAP_ANTHROPIC_VERTEX_BASE_URL`, plus `SAP_ANTHROPIC_AUTH_TOKEN` or `SAP_ANTHROPIC_API_KEY`
+
+Those providers expose these scoped models:
+
+- `bosch-anthropic/bosch-claude-haiku-4-5`
+- `bosch-anthropic/bosch-claude-sonnet-4-6`
+- `bosch-anthropic/bosch-claude-opus-4-6`
+- `sap-anthropic/sap-claude-haiku-4-5`
+- `sap-anthropic/sap-claude-sonnet-4-6`
+- `sap-anthropic/sap-claude-opus-4-6`
 
 `auth.json` is gitignored and will not be committed.
 

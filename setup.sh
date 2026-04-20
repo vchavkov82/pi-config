@@ -36,6 +36,20 @@ if [[ ! -f "$SCRIPT_DIR/settings.json" ]]; then
   "defaultProvider": "claude-code",
   "defaultModel": "claude-sonnet-4-6",
   "defaultThinkingLevel": "medium",
+  "enabledModels": [
+    "claude-code/claude-haiku-4-5",
+    "claude-code/claude-sonnet-4-6",
+    "claude-code/claude-opus-4-6",
+    "bosch-anthropic/bosch-claude-haiku-4-5",
+    "bosch-anthropic/bosch-claude-sonnet-4-6",
+    "bosch-anthropic/bosch-claude-opus-4-6",
+    "sap-anthropic/sap-claude-haiku-4-5",
+    "sap-anthropic/sap-claude-sonnet-4-6",
+    "sap-anthropic/sap-claude-opus-4-6",
+    "openai-codex/gpt-5.3-codex",
+    "openai-codex/gpt-5.4",
+    "openai-codex/gpt-5.4-mini"
+  ],
   "packages": [
     "../_pi/packages/pi-mcp-adapter",
     {
@@ -55,7 +69,9 @@ if [[ ! -f "$SCRIPT_DIR/settings.json" ]]; then
   "hideThinkingBlock": false,
   "extensions": [
     "+extensions/cmux/index.ts",
-    "+extensions/claude-tool/index.ts"
+    "+extensions/claude-tool/index.ts",
+    "extensions/claude-code-cli/index.mjs",
+    "extensions/vertex-anthropic-providers/index.mjs"
   ]
 }
 SETTINGS
