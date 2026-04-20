@@ -1,5 +1,5 @@
-import { isClaudeCodeReady } from '/home/vchavkov/.local/share/mise/installs/node/24.15.0/lib/node_modules/gsd-pi/dist/resources/extensions/claude-code-cli/readiness.js';
-import { streamViaClaudeCode } from '/home/vchavkov/.local/share/mise/installs/node/24.15.0/lib/node_modules/gsd-pi/dist/resources/extensions/claude-code-cli/stream-adapter.js';
+import { isClaudeCodeReady } from '/home/vchavkov/.local/lib/node_modules/gsd-pi/dist/resources/extensions/claude-code-cli/readiness.js';
+import { streamViaClaudeCode } from '/home/vchavkov/.local/lib/node_modules/gsd-pi/dist/resources/extensions/claude-code-cli/stream-adapter.js';
 
 const MODELS = [
   {
