@@ -4,11 +4,14 @@
   "defaultModel": "gpt-5.4",
   "defaultThinkingLevel": "medium",
   "enabledModels": [
-    "bosch-anthropic/claude-haiku-4-5",
-    "bosch-anthropic/claude-sonnet-4-6",
-    "bosch-anthropic/claude-opus-4-6",
+    "claude-haiku-4-5",
+    "claude-sonnet-4-6",
+    "claude-opus-4-6",
+    "claude-haiku-latest",
+    "claude-sonnet-latest",
+    "claude-opus-latest",
     "openai-codex/gpt-5.4",
-    "openai-codex/gpt-5.4-mini"
+    "openai-codex/gpt-5.3-codex"
   ],
   "packages": [
     "../_pi/packages/pi-smart-sessions",

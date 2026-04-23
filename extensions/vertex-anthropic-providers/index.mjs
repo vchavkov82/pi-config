@@ -1,4 +1,4 @@
-const BASE_MODELS = [
+const VERSIONED_MODELS = [
   {
     slug: 'claude-haiku-4-5',
     title: 'Claude Haiku 4.5',
@@ -28,6 +28,36 @@ const BASE_MODELS = [
   },
 ];
 
+const LATEST_MODELS = [
+  {
+    slug: 'claude-haiku-latest',
+    title: 'Claude Haiku Latest',
+    reasoning: false,
+    input: ['text', 'image'],
+    cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 },
+    contextWindow: 1_000_000,
+    maxTokens: 64_000,
+  },
+  {
+    slug: 'claude-sonnet-latest',
+    title: 'Claude Sonnet Latest',
+    reasoning: true,
+    input: ['text', 'image'],
+    cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 },
+    contextWindow: 1_000_000,
+    maxTokens: 64_000,
+  },
+  {
+    slug: 'claude-opus-latest',
+    title: 'Claude Opus Latest',
+    reasoning: true,
+    input: ['text', 'image'],
+    cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 },
+    contextWindow: 1_000_000,
+    maxTokens: 128_000,
+  },
+];
+
 function firstDefined(keys) {
   for (const key of keys) {
     if (process.env[key]) return key;
@@ -35,7 +65,7 @@ function firstDefined(keys) {
   return undefined;
 }
 
-function registerVertexAnthropicProvider(pi, { provider, label, baseUrlKeys, apiKeyKeys }) {
+function registerVertexAnthropicProvider(pi, { provider, label, baseUrlKeys, apiKeyKeys, models }) {
   const baseUrlKey = firstDefined(baseUrlKeys);
   const apiKeyKey = firstDefined(apiKeyKeys);
 
@@ -46,7 +76,7 @@ function registerVertexAnthropicProvider(pi, { provider, label, baseUrlKeys, api
     apiKey: apiKeyKey,
     authHeader: true,
     api: 'anthropic-messages',
-    models: BASE_MODELS.map((model) => ({
+    models: models.map((model) => ({
       id: model.slug,
       name: `${label} ${model.title}`,
       reasoning: model.reasoning,
@@ -60,20 +90,41 @@ function registerVertexAnthropicProvider(pi, { provider, label, baseUrlKeys, api
 
 export default function vertexAnthropicProviders(pi) {
   registerVertexAnthropicProvider(pi, {
+    provider: 'anthropic-versioned',
+    label: 'Anthropic',
+    baseUrlKeys: [
+      'ANTHROPIC_BASE_URL',
+    ],
+    apiKeyKeys: [
+      'ANTHROPIC_AUTH_TOKEN',
+    ],
+    models: VERSIONED_MODELS,
+  });
+
+  registerVertexAnthropicProvider(pi, {
+    provider: 'anthropic-latest',
+    label: 'Anthropic',
+    baseUrlKeys: [
+      'ANTHROPIC_BASE_URL',
+    ],
+    apiKeyKeys: [
+      'ANTHROPIC_AUTH_TOKEN',
+    ],
+    models: LATEST_MODELS,
+  });
+
+  registerVertexAnthropicProvider(pi, {
     provider: 'bosch-anthropic',
     label: 'Bosch',
     baseUrlKeys: [
       'BOSCH_ANTHROPIC_BASE_URL',
       'BOSCH_ANTHROPIC_VERTEX_BASE_URL',
       'ANTHROPIC_VERTEX_BASE_URL',
-      'ANTHROPIC_BASE_URL',
     ],
     apiKeyKeys: [
       'BOSCH_ANTHROPIC_AUTH_TOKEN',
-      'BOSCH_ANTHROPIC_API_KEY',
-      'ANTHROPIC_AUTH_TOKEN',
-      'ANTHROPIC_API_KEY',
     ],
+    models: VERSIONED_MODELS,
   });
 
   registerVertexAnthropicProvider(pi, {
@@ -85,7 +136,7 @@ export default function vertexAnthropicProviders(pi) {
     ],
     apiKeyKeys: [
       'SAP_ANTHROPIC_AUTH_TOKEN',
-      'SAP_ANTHROPIC_API_KEY',
     ],
+    models: VERSIONED_MODELS,
   });
 }
