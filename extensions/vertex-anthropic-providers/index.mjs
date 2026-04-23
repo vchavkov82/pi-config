@@ -66,6 +66,7 @@ export default function vertexAnthropicProviders(pi) {
       'BOSCH_ANTHROPIC_BASE_URL',
       'BOSCH_ANTHROPIC_VERTEX_BASE_URL',
       'ANTHROPIC_VERTEX_BASE_URL',
+      'ANTHROPIC_BASE_URL',
     ],
     apiKeyKeys: [
       'BOSCH_ANTHROPIC_AUTH_TOKEN',
