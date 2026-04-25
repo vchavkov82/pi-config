@@ -50,21 +50,6 @@ Create `~/.pi/agent/auth.json`:
 }
 ```
 
-Built-in API-key providers still read from `auth.json`, but the checked-in local/Bosch/SAP Anthropic providers are registered by `extensions/vertex-anthropic-providers/index.mjs` and read their base URLs plus tokens from environment variables instead.
-
-Supported environment variables:
-
-- Local Anthropic-compatible proxy: `ANTHROPIC_BASE_URL`, plus `ANTHROPIC_AUTH_TOKEN`
-- Bosch (legacy/current): `BOSCH_ANTHROPIC_BASE_URL` or `BOSCH_ANTHROPIC_VERTEX_BASE_URL`, plus `BOSCH_ANTHROPIC_AUTH_TOKEN`
-- Bosch fallback for older shells: `ANTHROPIC_VERTEX_BASE_URL`, plus `BOSCH_ANTHROPIC_AUTH_TOKEN`
-- SAP: `SAP_ANTHROPIC_BASE_URL` or `SAP_ANTHROPIC_VERTEX_BASE_URL`, plus `SAP_ANTHROPIC_AUTH_TOKEN`
-
-Those providers expose these scoped models:
-
-- Versioned Anthropic models: `claude-haiku-4-5`, `claude-sonnet-4-6`, `claude-opus-4-6`
-- Latest Anthropic aliases: `claude-haiku-latest`, `claude-sonnet-latest`, `claude-opus-latest`
-- Codex models stay scoped: `openai-codex/gpt-5.4`, `openai-codex/gpt-5.3-codex`
-
 `auth.json` is gitignored and will not be committed.
 
 ### Restart pi

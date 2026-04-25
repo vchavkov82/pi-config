@@ -46,8 +46,6 @@
   ],
   "hideThinkingBlock": false,
   "extensions": [
-    "+extensions/cmux/index.ts",
-    "extensions/claude-code-cli/index.mjs",
-    "extensions/vertex-anthropic-providers/index.mjs"
+    "+extensions/cmux/index.ts"
   ]
 }

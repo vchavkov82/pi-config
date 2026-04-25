@@ -65,9 +65,7 @@ if [[ ! -f "$SCRIPT_DIR/settings.json" ]]; then
   "hideThinkingBlock": false,
   "extensions": [
     "+extensions/cmux/index.ts",
-    "+extensions/claude-tool/index.ts",
-    "extensions/claude-code-cli/index.mjs",
-    "extensions/vertex-anthropic-providers/index.mjs"
+    "+extensions/claude-tool/index.ts"
   ]
 }
 SETTINGS
