@@ -34,7 +34,15 @@
     "../_pi/packages/pi-diff-review",
     "../_pi/packages/pi-mcp-adapter",
     "../_pi/packages/glimpse",
-    "../_pi/packages/pi-autoresearch"
+    "../_pi/packages/pi-autoresearch",
+    "../../.config/brain/.agents/_pi/packages/pi-mcp-adapter",
+    "../../.config/brain/.agents/_pi/packages/pi-smart-sessions",
+    "../../.config/brain/.agents/_pi/packages/pi-parallel",
+    "../../.config/brain/.agents/_pi/packages/pi-diff-review",
+    "../../.config/brain/.agents/_pi/packages/chrome-cdp-skill",
+    "../../.config/brain/.agents/_pi/packages/glimpse",
+    "../../.config/brain/.agents/_pi/packages/pi-interactive-subagents",
+    "../../.config/brain/.agents/_pi/packages/pi-autoresearch"
   ],
   "hideThinkingBlock": false,
   "extensions": [
