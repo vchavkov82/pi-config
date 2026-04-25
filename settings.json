@@ -1,25 +1,16 @@
 {
   "lastChangelogVersion": "0.70.2",
-  "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.4",
+  "defaultProvider": "anthropic",
+  "defaultModel": "claude-opus-4-6",
   "defaultThinkingLevel": "medium",
   "enabledModels": [
-    "openai-codex/gpt-5.4",
-    "openai-codex/gpt-5.4-mini",
     "claude-opus-4-6",
     "claude-sonnet-4-6",
-    "claude-haiku-4-5",
-    "claude-opus-4",
-    "claude-sonnet-4",
-    "claude-haiku-3",
-    "claude-opus-4-20250514",
+    "claude-sonnet-4-5",
+    "claude-sonnet-4-5-20250929",
     "claude-sonnet-4-20250514",
-    "claude-3-5-opus-20241022",
-    "claude-3-5-sonnet-20241022",
-    "claude-3-5-haiku-20241022",
-    "claude-opus-latest",
-    "claude-sonnet-latest",
-    "claude-haiku-latest"
+    "openai-codex/gpt-5.4",
+    "openai-codex/gpt-5.4-mini"
   ],
   "disabledModels": [
     "google-ai/*",
@@ -27,27 +18,19 @@
     "gemini*"
   ],
   "packages": [
-    "../_pi/packages/pi-smart-sessions",
-    "../_pi/packages/chrome-cdp-skill",
-    "-../_pi/packages/glimpse",
-    "../_pi/packages/pi-interactive-subagents",
-    "-../_pi/packages/pi-autoresearch",
-    "../_pi/packages/pi-parallel",
-    "../_pi/packages/pi-diff-review",
-    "../_pi/packages/pi-mcp-adapter",
-    "../_pi/packages/glimpse",
-    "../_pi/packages/pi-autoresearch",
-    "../../.config/brain/.agents/_pi/packages/pi-mcp-adapter",
-    "../../.config/brain/.agents/_pi/packages/pi-smart-sessions",
-    "../../.config/brain/.agents/_pi/packages/pi-parallel",
-    "../../.config/brain/.agents/_pi/packages/pi-diff-review",
-    "../../.config/brain/.agents/_pi/packages/chrome-cdp-skill",
-    "../../.config/brain/.agents/_pi/packages/glimpse",
-    "../../.config/brain/.agents/_pi/packages/pi-interactive-subagents",
-    "../../.config/brain/.agents/_pi/packages/pi-autoresearch"
+    "/home/vchavkov/.config/brain/.agents/_pi/packages/pi-smart-sessions",
+    "/home/vchavkov/.config/brain/.agents/_pi/packages/chrome-cdp-skill",
+    "-/home/vchavkov/.config/brain/.agents/_pi/packages/glimpse",
+    "/home/vchavkov/.config/brain/.agents/_pi/packages/pi-interactive-subagents",
+    "-/home/vchavkov/.config/brain/.agents/_pi/packages/pi-autoresearch",
+    "/home/vchavkov/.config/brain/.agents/_pi/packages/pi-parallel",
+    "/home/vchavkov/.config/brain/.agents/_pi/packages/pi-diff-review",
+    "/home/vchavkov/.config/brain/.agents/_pi/packages/pi-mcp-adapter",
+    "/home/vchavkov/.config/brain/.agents/_pi/packages/glimpse",
+    "/home/vchavkov/.config/brain/.agents/_pi/packages/pi-autoresearch"
   ],
   "hideThinkingBlock": false,
   "extensions": [
-    "+extensions/cmux/index.ts"
+    "+/home/vchavkov/.config/brain/.agents/pi-config/extensions/cmux/index.ts"
   ]
 }
