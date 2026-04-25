@@ -4,6 +4,8 @@
   "defaultModel": "gpt-5.4",
   "defaultThinkingLevel": "medium",
   "enabledModels": [
+    "openai-codex/gpt-5.4",
+    "openai-codex/gpt-5.4-mini",
     "claude-opus-4-6",
     "claude-sonnet-4-6",
     "claude-haiku-4-5",
