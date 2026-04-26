@@ -5,6 +5,7 @@ description: |
   for dev servers, test runners, background tasks, and embedded browsers.
   Read output, send commands, interact with web pages, and orchestrate
   multi-terminal workflows.
+disable-model-invocation: true
 ---
 
 # cmux Terminal & Browser Management
@@ -22,6 +23,7 @@ workspace over spawning new workspaces. Tabs keep everything grouped together
 and are less disruptive. Only use `new-workspace` when you need full isolation
 (e.g., a completely separate project).
 
+disable-model-invocation: true
 ---
 
 ## Environment Variables
@@ -37,6 +39,7 @@ cmux auto-sets these in every shell it spawns:
 Commands run inside a cmux shell automatically target the right workspace
 without needing `--workspace`.
 
+disable-model-invocation: true
 ---
 
 ## Core Commands
@@ -112,6 +115,7 @@ cmux send-key --surface <ref> ctrl+d    # EOF
 cmux send-key --surface <ref> escape    # Escape
 ```
 
+disable-model-invocation: true
 ---
 
 ## Patterns
@@ -197,6 +201,7 @@ cmux new-split right   # Terminal split to the right
 cmux new-split down    # Terminal split below
 ```
 
+disable-model-invocation: true
 ---
 
 ## Browser Surfaces
@@ -413,6 +418,7 @@ cmux browser --surface $BROWSER screenshot --out /tmp/dashboard.png
 cmux close-surface --surface $BROWSER
 ```
 
+disable-model-invocation: true
 ---
 
 ## Important Notes

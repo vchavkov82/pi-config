@@ -1,6 +1,7 @@
 ---
 name: worktree-dispatch
 description: Full git worktree lifecycle for Cursor agent task dispatch. Creates a worktree and task branch, writes the task brief, launches cursor-agent via cmux, monitors for questions and auto-answers them, then verifies, merges, and cleans up on completion. Use when "dispatch to cursor", "cursor worktree", "run this in cursor", "create worktree for task", "checkout worktree", "dispatch task to agent", "send to cursor agent", or "open in cursor". Requires pi + cmux environment.
+disable-model-invocation: true
 ---
 
 # Worktree Dispatch
@@ -23,6 +24,7 @@ for the user or itself to trigger the next check. This keeps pi responsive throu
 - No written task spec or clear requirements
 - Outside a git repository
 
+disable-model-invocation: true
 ---
 
 ## Configuration
@@ -40,6 +42,7 @@ agent: cursor                # cursor | codex | pi
 
 Per-invocation overrides accepted as natural language: "skip verify", "no auto merge", "use codex".
 
+disable-model-invocation: true
 ---
 
 ## Pre-flight Checks
@@ -50,6 +53,7 @@ Before creating the worktree:
 2. Check `.gitignore` — add `.worktrees/` if missing, then commit.
 3. Confirm `cursor/<slug>` branch does not already exist (`git branch --list cursor/<slug>`).
 
+disable-model-invocation: true
 ---
 
 ## Phase 1: Setup
@@ -76,6 +80,7 @@ Resulting structure:
 └── .gitignore                ← must include .worktrees/
 ```
 
+disable-model-invocation: true
 ---
 
 ## Phase 2: Brief
@@ -94,9 +99,11 @@ Write `.tasks/TASK.md` inside the worktree. Fill in every section:
 Write `.cursor/rules/task.mdc` inside the worktree:
 
 ```markdown
+disable-model-invocation: true
 ---
 description: "Active task instructions"
 alwaysApply: true
+disable-model-invocation: true
 ---
 
 Read `.tasks/TASK.md` for the full task specification and implement it completely.
@@ -112,6 +119,7 @@ Constraints:
 
 If the project already has `.cursor/rules/` files on main, copy them into `.worktrees/<slug>/.cursor/rules/` alongside `task.mdc` (copy, not symlink — branches must be self-contained).
 
+disable-model-invocation: true
 ---
 
 ## Phase 3: Launch
@@ -142,6 +150,7 @@ cmux read-screen --surface $SURFACE --lines 20
 
 Record `$SURFACE` and `$WORKTREE_PATH` — needed for checks and cleanup.
 
+disable-model-invocation: true
 ---
 
 ## Phase 4: Check
@@ -211,6 +220,7 @@ cmux read-screen --surface $SURFACE --scrollback --lines 200
 
 Show the full output to the user and escalate.
 
+disable-model-invocation: true
 ---
 
 ## Phase 5: Verify
@@ -230,6 +240,7 @@ If verification fails:
 
 Do not proceed to Phase 6 until verification is clean.
 
+disable-model-invocation: true
 ---
 
 ## Phase 6: Merge
@@ -248,6 +259,7 @@ If `auto_merge: false`: show the diff (`git diff main..cursor/<slug>`) and wait 
 
 Post-merge, re-run verify from the repo root to confirm nothing broke.
 
+disable-model-invocation: true
 ---
 
 ## Phase 7: Cleanup
@@ -267,6 +279,7 @@ cmux close-surface --surface $SURFACE
 
 If the merge did not happen (blocked or error path), delete the branch **only after explicit user confirmation**.
 
+disable-model-invocation: true
 ---
 
 ## Error Handling

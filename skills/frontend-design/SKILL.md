@@ -1,12 +1,14 @@
 ---
 name: frontend-design
 description: Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, or applications. Generates creative, polished code that avoids generic AI aesthetics. Includes brand design references, UX guidelines, polish principles, and anti-pattern detection.
+disable-model-invocation: true
 ---
 
 This skill guides creation of distinctive, production-grade frontend interfaces that avoid generic "AI slop" aesthetics. Implement real working code with exceptional attention to aesthetic details and creative choices.
 
 The user provides frontend requirements: a component, page, application, or interface to build. They may include context about the purpose, audience, or technical constraints.
 
+disable-model-invocation: true
 ---
 
 ## Context Gathering
@@ -17,6 +19,7 @@ Design skills produce generic output without project context. Before doing desig
 2. **Check `.design/impeccable.md`**: Read from the project root. If it exists with required context, proceed.
 3. **Ask the user**: If neither source has context, ask about target audience, brand personality, and aesthetic direction before designing.
 
+disable-model-invocation: true
 ---
 
 ## Design Thinking
@@ -35,6 +38,7 @@ Then implement working code (HTML/CSS/JS, React, Vue, etc.) that is:
 - Cohesive with a clear aesthetic point-of-view
 - Meticulously refined in every detail
 
+disable-model-invocation: true
 ---
 
 ## Brand Design References
@@ -57,6 +61,7 @@ If the brand README only contains a URL pointer (e.g. `https://getdesign.md/<bra
 
 If no brand is named, choose 1-3 relevant brand references based on the product type and desired tone.
 
+disable-model-invocation: true
 ---
 
 ## Design System Generator
@@ -79,6 +84,7 @@ python3 $HOME/.config/brain/.agents/skills/ui-ux-pro-max/scripts/search.py "<key
 
 Use `--design-system` first for full recommendations, then `--domain` to deep-dive any dimension. Available domains: product, style, color, typography, landing, chart, ux, google-fonts, react, web, prompt.
 
+disable-model-invocation: true
 ---
 
 ## Frontend Aesthetics Guidelines
@@ -165,6 +171,7 @@ Focus on high-impact moments: one well-orchestrated page load with staggered rev
 - DO NOT use rounded rectangles with generic drop shadows — safe, forgettable, could be any AI output
 - DO NOT put large icons with rounded corners above every heading — makes sites look templated
 
+disable-model-invocation: true
 ---
 
 ## Interface Polish Principles
@@ -189,6 +196,7 @@ Apply these details that compound into a great experience:
 - Never use `transition: all` — always specify exact properties
 - Use `will-change` sparingly, only for `transform`, `opacity`, `filter`
 
+disable-model-invocation: true
 ---
 
 ## UX Quality Checklist
@@ -220,6 +228,7 @@ Apply these details that compound into a great experience:
 - [ ] Animations 150-300ms with ease-out
 - [ ] No nested scroll regions interfering with main scroll
 
+disable-model-invocation: true
 ---
 
 ## AI Slop Test
@@ -230,6 +239,7 @@ A distinctive interface should make someone ask "how was this made?" not "which 
 
 Watch for: overused font families, cliché color schemes (purple gradients on white), predictable layouts, identical card grids, gradient text, side-stripe borders, glassmorphism decoration, hero metric layout templates (big number + small label + supporting stats), and cookie-cutter component patterns.
 
+disable-model-invocation: true
 ---
 
 ## Implementation Principles

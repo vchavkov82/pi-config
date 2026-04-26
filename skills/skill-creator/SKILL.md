@@ -1,6 +1,7 @@
 ---
 name: skill-creator
 description: Create new agent skills following the Agent Skills specification. Use when asked to "create a skill", "add a new skill", "write a skill", "make a skill", "build a skill", or scaffold a new skill with SKILL.md. Guides through requirements, planning, writing, registration, and verification.
+disable-model-invocation: true
 ---
 
 # Create a New Skill
@@ -66,9 +67,11 @@ Create `<skill-directory>/<name>/SKILL.md`.
 The YAML frontmatter **must** be the first thing in the file. No comments or blank lines before `---`.
 
 ```yaml
+disable-model-invocation: true
 ---
 name: <skill-name>
 description: <what it does>. Use when <trigger phrases>. <key capabilities>.
+disable-model-invocation: true
 ---
 ```
 
@@ -136,9 +139,11 @@ For workflow and output patterns, read:
 If the skill is based on or adapted from external sources, add an HTML comment **after** the frontmatter closing `---`:
 
 ```markdown
+disable-model-invocation: true
 ---
 name: example
 description: ...
+disable-model-invocation: true
 ---
 
 <!--
