@@ -1,11 +1,11 @@
 {
   "lastChangelogVersion": "0.70.2",
-  "defaultProvider": "anthropic",
-  "defaultModel": "claude-opus-4-6",
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.5",
   "defaultThinkingLevel": "medium",
   "enabledModels": [
-    "sap-anthropic/anthropic--claude-4.6-sonnet",
     "sap-anthropic/anthropic--claude-4.6-opus",
+    "sap-anthropic/anthropic--claude-4.6-sonnet",
     "sap-anthropic/anthropic--claude-4.5-sonnet",
     "sap-anthropic/anthropic--claude-4.5-opus",
     "sap-anthropic/anthropic--claude-4.5-haiku",
@@ -27,6 +27,7 @@
   "hideThinkingBlock": false,
   "extensions": [
     "+extensions/cmux/index.ts",
-    "+extensions/claude-code-cli/index.mjs"
+    "+extensions/claude-code-cli/index.mjs",
+    "-extensions/model-status/index.ts"
   ]
 }
