@@ -18,7 +18,8 @@
       "authHeader": true,
       "compat": {
         "supportsDeveloperRole": false,
-        "supportsReasoningEffort": false
+        "supportsReasoningEffort": false,
+        "maxTokensField": "max_completion_tokens"
       },
       "models": [
         { "id": "gpt-5",        "name": "GPT-5 (SAP)",        "reasoning": true },
