@@ -6,20 +6,52 @@
       "apiKey": "ANTHROPIC_AUTH_TOKEN",
       "models": [
         {
-          "id": "anthropic--claude-4.6-sonnet",
-          "name": "Claude 4.6 Sonnet (SAP)"
-        },
-        {
-          "id": "anthropic--claude-4.6-opus",
-          "name": "Claude 4.6 Opus (SAP)"
-        },
-        {
-          "id": "anthropic--claude-4.5-sonnet",
-          "name": "Claude 4.5 Sonnet (SAP)"
+          "id": "anthropic--claude-4-sonnet",
+          "name": "Claude 4 Sonnet (SAP)",
+          "reasoning": true,
+          "input": ["text", "image"],
+          "contextWindow": 200000,
+          "maxTokens": 64000
         },
         {
           "id": "anthropic--claude-4.5-haiku",
-          "name": "Claude 4.5 Haiku (SAP)"
+          "name": "Claude 4.5 Haiku (SAP)",
+          "reasoning": true,
+          "input": ["text", "image"],
+          "contextWindow": 200000,
+          "maxTokens": 64000
+        },
+        {
+          "id": "anthropic--claude-4.5-opus",
+          "name": "Claude 4.5 Opus (SAP)",
+          "reasoning": true,
+          "input": ["text", "image"],
+          "contextWindow": 200000,
+          "maxTokens": 64000
+        },
+        {
+          "id": "anthropic--claude-4.5-sonnet",
+          "name": "Claude 4.5 Sonnet (SAP)",
+          "reasoning": true,
+          "input": ["text", "image"],
+          "contextWindow": 200000,
+          "maxTokens": 64000
+        },
+        {
+          "id": "anthropic--claude-4.6-opus",
+          "name": "Claude 4.6 Opus (SAP)",
+          "reasoning": true,
+          "input": ["text", "image"],
+          "contextWindow": 1000000,
+          "maxTokens": 128000
+        },
+        {
+          "id": "anthropic--claude-4.6-sonnet",
+          "name": "Claude 4.6 Sonnet (SAP)",
+          "reasoning": true,
+          "input": ["text", "image"],
+          "contextWindow": 1000000,
+          "maxTokens": 64000
         }
       ],
       "compat": {
