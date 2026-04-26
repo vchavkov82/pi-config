@@ -1,12 +1,7 @@
 {
   "lastChangelogVersion": "0.70.2",
-<<<<<<< Updated upstream
-  "defaultProvider": "anthropic",
+  "defaultProvider": "claude-code",
   "defaultModel": "claude-sonnet-4-6",
-=======
-  "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.4",
->>>>>>> Stashed changes
   "defaultThinkingLevel": "medium",
   "packages": [
     "git:github.com/vchavkov82/pi-smart-sessions",
@@ -20,6 +15,7 @@
   ],
   "hideThinkingBlock": false,
   "extensions": [
-    "+extensions/cmux/index.ts"
+    "+extensions/cmux/index.ts",
+    "+extensions/claude-code-cli/index.mjs"
   ]
 }
