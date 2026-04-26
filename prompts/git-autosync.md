@@ -33,5 +33,5 @@ Add the current repository to the automated git sync system and verify timers:
    systemctl --user daemon-reload
    systemctl --user enable --now git-sync.timer git-submodule-sync.timer
    ```
-8. Run one manual sync to verify: trigger `/git-sync`
+8. Run one manual sync to verify: trigger `/git-sync`. The sync scripts now automatically remove stale submodule gitlinks that no longer have `.gitmodules` mappings, so `fatal: no submodule mapping found...` should not block verification.
 9. Show final timer status
