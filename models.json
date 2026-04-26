@@ -58,36 +58,7 @@
         "supportsEagerToolInputStreaming": false
       }
     },
-    "sap-openai": {
-      "baseUrl": "http://localhost:6655/openai/v1",
-      "api": "openai-completions",
-      "apiKey": "ANTHROPIC_AUTH_TOKEN",
-      "authHeader": true,
-      "compat": {
-        "supportsDeveloperRole": false,
-        "supportsReasoningEffort": false,
-        "maxTokensField": "max_completion_tokens"
-      },
-      "models": [
-        {
-          "id": "gpt-5",
-          "name": "GPT-5 (SAP)",
-          "reasoning": true
-        },
-        {
-          "id": "gpt-5-mini",
-          "name": "GPT-5 Mini (SAP)"
-        },
-        {
-          "id": "gpt-4.1",
-          "name": "GPT-4.1 (SAP)"
-        },
-        {
-          "id": "gpt-4.1-mini",
-          "name": "GPT-4.1 Mini (SAP)"
-        }
-      ]
-    },
+
     "anthropic": {
       "compat": {
         "supportsEagerToolInputStreaming": false
