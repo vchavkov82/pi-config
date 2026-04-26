@@ -1,8 +1,23 @@
 {
   "lastChangelogVersion": "0.70.2",
-  "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.4",
+  "defaultProvider": "sap-anthropic",
+  "defaultModel": "anthropic--claude-4.5-sonnet",
   "defaultThinkingLevel": "medium",
+  "enabledModels": [
+    "sap-anthropic/anthropic--claude-4.6-sonnet",
+    "sap-anthropic/anthropic--claude-4.6-opus",
+    "sap-anthropic/anthropic--claude-4.5-sonnet",
+    "sap-anthropic/anthropic--claude-4.5-opus",
+    "sap-anthropic/anthropic--claude-4.5-haiku",
+    "sap-anthropic/anthropic--claude-4-sonnet",
+    "sap-openai/gpt-5",
+    "sap-openai/gpt-5-mini",
+    "sap-openai/gpt-4.1",
+    "sap-openai/gpt-4.1-mini",
+    "openai-codex/gpt-5.5",
+    "openai-codex/gpt-5.4",
+    "openai-codex/gpt-5.4-mini"
+  ],
   "packages": [
     "git:github.com/vchavkov82/pi-smart-sessions",
     "git:github.com/pasky/chrome-cdp-skill",
