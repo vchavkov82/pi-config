@@ -1,7 +1,7 @@
 {
   "lastChangelogVersion": "0.70.2",
-  "defaultProvider": "sap-anthropic",
-  "defaultModel": "anthropic--claude-4.5-sonnet",
+  "defaultProvider": "anthropic",
+  "defaultModel": "claude-opus-4-7",
   "defaultThinkingLevel": "medium",
   "enabledModels": [
     "sap-anthropic/anthropic--claude-4.6-sonnet",
