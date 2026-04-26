@@ -3,7 +3,7 @@
     "sap-anthropic": {
       "baseUrl": "http://localhost:6655/anthropic",
       "api": "anthropic-messages",
-      "apiKey": "ANTHROPIC_AUTH_TOKEN",
+      "apiKey": "ANTHROPIC_API_KEY",
       "models": [
         {
           "id": "anthropic--claude-4.6-opus",
