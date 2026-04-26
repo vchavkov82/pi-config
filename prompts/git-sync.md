@@ -1,15 +1,29 @@
 ---
-description: Manually run git sync — commit, pull, push brain repo and all submodules
+description: Manually run git sync — commit, pull, push the current repo (and submodules if any)
 ---
-Run a full manual git sync:
+Run a full manual git sync for the current repository:
 
-1. Run `bash ~/.config/brain/scripts/git/git-sync.sh` and show the output
-2. If the brain repo has diverged (push rejected or rebase conflict):
-   - Run `git -C ~/.config/brain fetch origin`
-   - Hard-reset: `git -C ~/.config/brain reset --hard origin/main`
-   - Commit any modified submodule pointers: `git -C ~/.config/brain add .agents/ && git -c commit.gpgsign=false -C ~/.config/brain commit -m "auto: sync submodule pointers $(date '+%Y-%m-%d %H:%M')" || true`
-   - Push: `git -C ~/.config/brain push origin main`
-3. Run `bash ~/.config/brain/scripts/git/git-submodule-sync.sh` and show the output
-4. Commit and push any updated submodule pointers from step 3
-5. Restore any dirty read-only submodules: `git -C ~/.config/brain submodule foreach 'git checkout . 2>/dev/null || true'`
-6. Show final status: `git -C ~/.config/brain status --short`
+1. Detect the repo root: `REPO=$(git rev-parse --show-toplevel)`
+2. Determine the sync branch: `BRANCH=$(git branch --show-current)`
+3. Check for uncommitted changes and auto-commit if any:
+   ```bash
+   cd "$REPO"
+   if ! git diff --quiet --ignore-submodules=dirty || ! git diff --cached --quiet --ignore-submodules=dirty || [ -n "$(git ls-files --others --exclude-standard)" ]; then
+     git add -A
+     git -c commit.gpgsign=false commit -m "auto: manual sync $(date '+%Y-%m-%d %H:%M')"
+   fi
+   ```
+4. Pull with rebase: `git -c commit.gpgsign=false pull --rebase --autostash origin "$BRANCH"`
+5. If pull fails (diverged or conflict):
+   - Abort rebase: `git rebase --abort`
+   - Fetch: `git fetch origin`
+   - Hard-reset: `git reset --hard "origin/$BRANCH"`
+   - Re-commit any local changes that were lost
+   - Push: `git push origin "$BRANCH"`
+6. Push if ahead: `git push origin "$BRANCH"`
+7. If the repo has submodules (`.gitmodules` exists):
+   - Update submodules: `git submodule update --init --recursive`
+   - For each writable submodule, commit + push changes inside it first
+   - Commit any updated submodule pointers: `git add . && git -c commit.gpgsign=false commit -m "auto: sync submodule pointers $(date '+%Y-%m-%d %H:%M')" || true`
+   - Push again if submodule pointers changed
+8. Show final status: `git status --short`
