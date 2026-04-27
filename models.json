@@ -16,10 +16,7 @@
       "api": "openai-completions",
       "apiKey": "ANTHROPIC_AUTH_TOKEN",
       "authHeader": true,
-      "compat": {
-        "supportsDeveloperRole": false,
-        "supportsReasoningEffort": false
-      },
+      "compat": { "supportsDeveloperRole": false, "supportsReasoningEffort": false },
       "models": [
         { "id": "gpt-5",        "name": "GPT-5 (SAP)",        "reasoning": true },
         { "id": "gpt-5-mini",   "name": "GPT-5 Mini (SAP)" },
