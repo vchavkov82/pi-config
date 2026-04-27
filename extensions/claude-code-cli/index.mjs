@@ -44,8 +44,19 @@ function applyEnvFile(filePath) {
   }
 }
 
+function applyClaudeCodeCompatibilityEnv() {
+  process.env.CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS = '1';
+  process.env.CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC = '1';
+}
+
+function streamViaLocalClaudeCode(model, context, options) {
+  applyClaudeCodeCompatibilityEnv();
+  return streamViaClaudeCode(model, context, options);
+}
+
 function streamViaBoschClaudeCode(model, context, options) {
   applyEnvFile(resolve(process.env.HOME ?? '', '.zsh', 'zsh-aliases-claude-bosch'));
+  applyClaudeCodeCompatibilityEnv();
   return streamViaClaudeCode(model, context, options);
 }
 
@@ -81,6 +92,15 @@ const MODELS = [
 
 const BOSCH_MODELS = [
   {
+    id: 'claude-sonnet-4-6',
+    name: 'Claude Sonnet 4.6 (Bosch via Claude Code)',
+    reasoning: true,
+    input: ['text', 'image'],
+    cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 },
+    contextWindow: 1_000_000,
+    maxTokens: 64_000,
+  },
+  {
     id: 'claude-opus-4-5@20251101',
     name: 'Claude Opus 4.5 20251101 (Bosch via Claude Code)',
     reasoning: true,
@@ -101,7 +121,7 @@ const BOSCH_MODELS = [
   {
     id: 'claude-sonnet-4@20250514',
     name: 'Claude Sonnet 4 20250514 (Bosch via Claude Code)',
-    reasoning: false,
+    reasoning: true,
     input: ['text', 'image'],
     cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 },
     contextWindow: 1_000_000,
@@ -133,7 +153,7 @@ export default function claudeCodeCli(pi) {
     api: 'anthropic-messages',
     baseUrl: 'local://claude-code',
     isReady: isClaudeCodeReady,
-    streamSimple: streamViaClaudeCode,
+    streamSimple: streamViaLocalClaudeCode,
     models: MODELS,
   });
 }

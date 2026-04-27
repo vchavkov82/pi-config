@@ -1,12 +1,13 @@
 {
   "lastChangelogVersion": "0.70.2",
   "defaultProvider": "bosch-claude-code",
-  "defaultModel": "claude-opus-4-5@20251101",
+  "defaultModel": "claude-sonnet-4@20250514",
   "defaultThinkingLevel": "medium",
   "enabledModels": [
     "bosch-claude-code/claude-3-5-haiku@20241022",
     "bosch-claude-code/claude-opus-4-1@20250805",
     "bosch-claude-code/claude-opus-4-5@20251101",
+    "bosch-claude-code/claude-sonnet-4-6",
     "bosch-claude-code/claude-sonnet-4@20250514",
     "openai-codex/gpt-5.4",
     "openai-codex/gpt-5.4-mini",
