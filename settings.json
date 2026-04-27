@@ -1,7 +1,7 @@
 {
   "lastChangelogVersion": "0.70.5",
   "defaultProvider": "sap-openai",
-  "defaultModel": "gpt-5-mini",
+  "defaultModel": "gpt-5",
   "defaultThinkingLevel": "medium",
   "enabledModels": [
     "claude-opus-4-6",
@@ -10,8 +10,11 @@
     "anthropic/claude-opus-4-6",
     "anthropic/claude-sonnet-4-6",
     "anthropic/claude-haiku-4-5",
-    "bosch-claude-code/claude-sonnet-4@20250514",
     "bosch-claude-code/claude-3-5-haiku@20241022",
+    "bosch-claude-code/claude-opus-4-1@20250805",
+    "bosch-claude-code/claude-opus-4-5@20251101",
+    "bosch-claude-code/claude-sonnet-4-6",
+    "bosch-claude-code/claude-sonnet-4@20250514",
     "sap-anthropic/anthropic--claude-4.6-sonnet",
     "sap-anthropic/anthropic--claude-4.6-opus",
     "sap-anthropic/anthropic--claude-4.5-haiku",

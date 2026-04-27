@@ -81,15 +81,6 @@ const MODELS = [
 
 const BOSCH_MODELS = [
   {
-    id: 'claude-sonnet-4@20250514',
-    name: 'Claude Sonnet 4 20250514 (Bosch via Claude Code)',
-    reasoning: false,
-    input: ['text', 'image'],
-    cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 },
-    contextWindow: 1_000_000,
-    maxTokens: 64_000,
-  },
-  {
     id: 'claude-3-5-haiku@20241022',
     name: 'Claude 3.5 Haiku 20241022 (Bosch via Claude Code)',
     reasoning: false,
@@ -97,6 +88,42 @@ const BOSCH_MODELS = [
     cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 },
     contextWindow: 200_000,
     maxTokens: 8_192,
+  },
+  {
+    id: 'claude-opus-4-1@20250805',
+    name: 'Claude Opus 4.1 20250805 (Bosch via Claude Code)',
+    reasoning: true,
+    input: ['text', 'image'],
+    cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 },
+    contextWindow: 1_000_000,
+    maxTokens: 64_000,
+  },
+  {
+    id: 'claude-opus-4-5@20251101',
+    name: 'Claude Opus 4.5 20251101 (Bosch via Claude Code)',
+    reasoning: true,
+    input: ['text', 'image'],
+    cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 },
+    contextWindow: 1_000_000,
+    maxTokens: 64_000,
+  },
+  {
+    id: 'claude-sonnet-4-6',
+    name: 'Claude Sonnet 4.6 (Bosch via Claude Code)',
+    reasoning: true,
+    input: ['text', 'image'],
+    cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 },
+    contextWindow: 1_000_000,
+    maxTokens: 64_000,
+  },
+  {
+    id: 'claude-sonnet-4@20250514',
+    name: 'Claude Sonnet 4 20250514 (Bosch via Claude Code)',
+    reasoning: false,
+    input: ['text', 'image'],
+    cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 },
+    contextWindow: 1_000_000,
+    maxTokens: 64_000,
   },
 ];
 
