@@ -45,14 +45,14 @@ disable-model-invocation: true
 
 When the user says "like Stripe", "inspired by Linear", or references a specific brand, look up its design system for exact tokens (hex colors, font weights, shadow definitions, spacing).
 
-**Location**: `$HOME/.config/brain/.agents/design/awesome-design-md/design-md/`
+**Location**: `$HOME/.config/brain/.agents/_design/awesome-design-md/design-md/`
 
 ```bash
 # List all available brands (66+)
-ls $HOME/.config/brain/.agents/design/awesome-design-md/design-md/
+ls $HOME/.config/brain/.agents/_design/awesome-design-md/design-md/
 
 # Read a specific brand's design system
-cat $HOME/.config/brain/.agents/design/awesome-design-md/design-md/<brand>/README.md
+cat $HOME/.config/brain/.agents/_design/awesome-design-md/design-md/<brand>/README.md
 ```
 
 **Available brands include**: linear.app, notion, vercel, supabase, cursor, stripe, airbnb, uber, spotify, apple, claude, figma, framer, hashicorp, sentry, resend, raycast, superhuman, wise, and many more.
