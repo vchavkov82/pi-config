@@ -37,6 +37,7 @@
   "extensions": [
     "+extensions/cmux/index.ts",
     "+extensions/claude-code-cli/index.mjs",
+    "+extensions/footer-inline-status/index.ts",
     "-extensions/model-status/index.ts"
   ]
 }
