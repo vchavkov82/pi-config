@@ -3,113 +3,26 @@
     "sap-anthropic": {
       "baseUrl": "http://localhost:6655/anthropic",
       "api": "anthropic-messages",
-      "apiKey": "ANTHROPIC_API_KEY",
+      "apiKey": "ANTHROPIC_AUTH_TOKEN",
       "models": [
-        {
-          "id": "anthropic--claude-4.6-opus",
-          "name": "Claude 4.6 Opus (SAP)",
-          "reasoning": true,
-          "input": ["text", "image"],
-          "contextWindow": 1000000,
-          "maxTokens": 128000
-        },
-        {
-          "id": "anthropic--claude-4-sonnet",
-          "name": "Claude 4 Sonnet (SAP)",
-          "reasoning": true,
-          "input": ["text", "image"],
-          "contextWindow": 200000,
-          "maxTokens": 64000
-        },
-        {
-          "id": "anthropic--claude-4.5-haiku",
-          "name": "Claude 4.5 Haiku (SAP)",
-          "reasoning": true,
-          "input": ["text", "image"],
-          "contextWindow": 200000,
-          "maxTokens": 64000
-        },
-        {
-          "id": "anthropic--claude-4.5-opus",
-          "name": "Claude 4.5 Opus (SAP)",
-          "reasoning": true,
-          "input": ["text", "image"],
-          "contextWindow": 200000,
-          "maxTokens": 64000
-        },
-        {
-          "id": "anthropic--claude-4.5-sonnet",
-          "name": "Claude 4.5 Sonnet (SAP)",
-          "reasoning": true,
-          "input": ["text", "image"],
-          "contextWindow": 200000,
-          "maxTokens": 64000
-        },
-        {
-          "id": "anthropic--claude-4.6-sonnet",
-          "name": "Claude 4.6 Sonnet (SAP)",
-          "reasoning": true,
-          "input": ["text", "image"],
-          "contextWindow": 1000000,
-          "maxTokens": 64000
-        }
-      ],
-      "compat": {
-        "supportsEagerToolInputStreaming": false
-      }
+        { "id": "anthropic--claude-4.6-sonnet", "name": "Claude 4.6 Sonnet (SAP)" },
+        { "id": "anthropic--claude-4.6-opus",   "name": "Claude 4.6 Opus (SAP)" },
+        { "id": "anthropic--claude-4.5-sonnet", "name": "Claude 4.5 Sonnet (SAP)" },
+        { "id": "anthropic--claude-4.5-haiku",  "name": "Claude 4.5 Haiku (SAP)" }
+      ]
     },
-
-    "anthropic": {
-      "compat": {
-        "supportsEagerToolInputStreaming": false
-      },
-      "modelOverrides": {
-        "claude-opus-4-7": {
-          "name": "Claude Opus 4.7 (SAP)"
-        },
-        "claude-opus-4-6": {
-          "name": "Claude Opus 4.6 (SAP)"
-        },
-        "claude-sonnet-4-6": {
-          "name": "Claude Sonnet 4.6 (SAP)"
-        },
-        "claude-haiku-4-5": {
-          "name": "Claude Haiku 4.5 (SAP)"
-        },
-        "claude-opus-4-5": {
-          "name": "Claude Opus 4.5 (SAP)"
-        },
-        "claude-opus-4-1": {
-          "name": "Claude Opus 4.1 (SAP)"
-        },
-        "claude-opus-4-0": {
-          "name": "Claude Opus 4.0 (SAP)"
-        },
-        "claude-sonnet-4-5": {
-          "name": "Claude Sonnet 4.5 (SAP)"
-        },
-        "claude-sonnet-4-0": {
-          "name": "Claude Sonnet 4.0 (SAP)"
-        },
-        "claude-haiku-4-5-20251001": {
-          "name": "Claude Haiku 4.5 20251001 (SAP)"
-        },
-        "claude-opus-4-5-20251101": {
-          "name": "Claude Opus 4.5 20251101 (SAP)"
-        },
-        "claude-opus-4-1-20250805": {
-          "name": "Claude Opus 4.1 20250805 (SAP)"
-        },
-        "claude-opus-4-20250514": {
-          "name": "Claude Opus 4 20250514 (SAP)"
-        },
-        "claude-sonnet-4-5-20250929": {
-          "name": "Claude Sonnet 4.5 20250929 (SAP)"
-        },
-        "claude-sonnet-4-20250514": {
-          "name": "Claude Sonnet 4 20250514 (SAP)"
-        }
-      }
+    "sap-openai": {
+      "baseUrl": "http://localhost:6655/openai/v1",
+      "api": "openai-completions",
+      "apiKey": "ANTHROPIC_AUTH_TOKEN",
+      "authHeader": true,
+      "compat": { "supportsDeveloperRole": false, "supportsReasoningEffort": false },
+      "models": [
+        { "id": "gpt-5",        "name": "GPT-5 (SAP)",        "reasoning": true },
+        { "id": "gpt-5-mini",   "name": "GPT-5 Mini (SAP)" },
+        { "id": "gpt-4.1",      "name": "GPT-4.1 (SAP)" },
+        { "id": "gpt-4.1-mini", "name": "GPT-4.1 Mini (SAP)" }
+      ]
     }
   }
 }
