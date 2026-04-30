@@ -31,7 +31,8 @@
     {
       "source": "git:github.com/vchavkov82/pi-autoresearch",
       "skills": []
-    }
+    },
+    "/home/vchavkov/.config/brain/.agents/openspec-pi"
   ],
   "hideThinkingBlock": false,
   "extensions": [
