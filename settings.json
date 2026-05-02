@@ -1,8 +1,13 @@
 {
   "lastChangelogVersion": "0.72.1",
+<<<<<<< HEAD
   "defaultProvider": "sap-anthropic",
 <<<<<<< Updated upstream
   "defaultModel": "anthropic--claude-4.6-sonnet",
+=======
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.5",
+>>>>>>> 3769482 (lean up)
   "defaultThinkingLevel": "xhigh",
 =======
   "defaultModel": "anthropic--claude-4.6-opus",
