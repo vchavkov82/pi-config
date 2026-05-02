@@ -5,9 +5,6 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 function resolveHelperPath(fileName) {
   const currentDir = dirname(fileURLToPath(import.meta.url));
   const candidates = [
-    resolve(process.execPath, '..', '..', 'lib', 'node_modules', 'gsd-pi', 'dist', 'resources', 'extensions', 'claude-code-cli', fileName),
-    resolve(process.env.HOME ?? '', '.local', 'share', 'mise', 'installs', 'node', '24.15.0', 'lib', 'node_modules', 'gsd-pi', 'dist', 'resources', 'extensions', 'claude-code-cli', fileName),
-    resolve(process.env.HOME ?? '', '.gsd', 'agent', 'extensions', 'claude-code-cli', fileName),
     resolve(currentDir, fileName),
   ];
 
