@@ -2,7 +2,7 @@
   "lastChangelogVersion": "0.72.1",
   "defaultProvider": "sap-anthropic",
   "defaultModel": "anthropic--claude-4.6-opus",
-  "defaultThinkingLevel": "high",
+  "defaultThinkingLevel": "xhigh",
   "enabledModels": [
     "claude-opus-4-6",
     "claude-sonnet-4-6",
