@@ -1,7 +1,7 @@
 {
   "lastChangelogVersion": "0.72.1",
-  "defaultProvider": "sap-anthropic",
-  "defaultModel": "anthropic--claude-4.6-opus",
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.5",
   "defaultThinkingLevel": "xhigh",
   "enabledModels": [
     "claude-opus-4-6",
