@@ -1,14 +1,8 @@
 {
   "lastChangelogVersion": "0.72.1",
-<<<<<<< Updated upstream
   "defaultProvider": "sap-anthropic",
   "defaultModel": "anthropic--claude-4.6-opus",
   "defaultThinkingLevel": "xhigh",
-=======
-  "defaultProvider": "sap-openai",
-  "defaultModel": "gpt-5",
-  "defaultThinkingLevel": "high",
->>>>>>> Stashed changes
   "enabledModels": [
     "claude-opus-4-6",
     "claude-sonnet-4-6",
