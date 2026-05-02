@@ -4,6 +4,12 @@
   "defaultModel": "gpt-5.5",
   "defaultThinkingLevel": "medium",
   "enabledModels": [
+    "claude-opus-4-6",
+    "claude-sonnet-4-6",
+    "claude-haiku-4-5",
+    "anthropic/claude-opus-4-6",
+    "anthropic/claude-sonnet-4-6",
+    "anthropic/claude-haiku-4-5",
     "sap-anthropic/anthropic--claude-4.6-sonnet",
     "sap-anthropic/anthropic--claude-4.6-opus",
     "sap-anthropic/anthropic--claude-4.5-haiku",
