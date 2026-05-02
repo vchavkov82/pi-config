@@ -3,6 +3,7 @@
 <<<<<<< HEAD
   "defaultProvider": "sap-anthropic",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   "defaultModel": "anthropic--claude-4.6-sonnet",
 =======
   "defaultProvider": "openai-codex",
@@ -10,9 +11,10 @@
 >>>>>>> 3769482 (lean up)
   "defaultThinkingLevel": "xhigh",
 =======
+=======
+>>>>>>> Stashed changes
   "defaultModel": "anthropic--claude-4.6-opus",
   "defaultThinkingLevel": "high",
->>>>>>> Stashed changes
   "enabledModels": [
     "claude-opus-4-6",
     "claude-sonnet-4-6",
@@ -58,5 +60,9 @@
     "+extensions/claude-code-cli/index.mjs",
     "+extensions/footer-inline-status/index.ts",
     "-extensions/model-status/index.ts"
-  ]
+  ],
+  "skills": [
+    "/home/vchavkov/.config/brain/.agents/skills/grill-me"
+  ],
+  "enableSkillCommands": true
 }
