@@ -1,8 +1,13 @@
 {
   "lastChangelogVersion": "0.72.1",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   "defaultProvider": "sap-anthropic",
   "defaultModel": "anthropic--claude-4.6-opus",
+=======
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.5",
+>>>>>>> Stashed changes
   "defaultThinkingLevel": "xhigh",
 =======
   "defaultProvider": "openai-codex",
