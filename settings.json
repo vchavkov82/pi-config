@@ -40,7 +40,7 @@
     },
     "/home/vchavkov/.config/brain/.agents/openspec-pi",
     "/home/vchavkov/.config/brain/.agents/obscura-plugin-pi",
-    "/home/vchavkov/.config/brain/.agents/huashu-design"
+    "/home/vchavkov/.config/brain/.agents/_design/huashu-design"
   ],
   "hideThinkingBlock": false,
   "extensions": [
