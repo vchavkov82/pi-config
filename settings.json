@@ -1,14 +1,24 @@
 {
   "lastChangelogVersion": "0.72.1",
-  "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.5",
+  "defaultProvider": "sap-anthropic",
+  "defaultModel": "anthropic--claude-4.6-opus",
   "defaultThinkingLevel": "xhigh",
   "enabledModels": [
+    "claude-opus-4-6",
+    "claude-sonnet-4-6",
+    "claude-haiku-4-5",
+    "anthropic/claude-opus-4-6",
+    "anthropic/claude-sonnet-4-6",
+    "anthropic/claude-haiku-4-5",
+    "sap-anthropic/anthropic--claude-4.6-sonnet",
+    "sap-anthropic/anthropic--claude-4.6-opus",
+    "sap-anthropic/anthropic--claude-4.5-haiku",
     "openai-codex/gpt-5.5",
     "openai-codex/gpt-5.4",
     "openai-codex/gpt-5.4-mini",
     "sap-openai/gpt-5",
-    "sap-openai/gpt-5-mini"
+    "sap-openai/gpt-5-mini",
+    "sap-anthropic/anthropic--claude-4.5-sonnet"
   ],
   "packages": [
     "git:github.com/vchavkov82/pi-smart-sessions",
