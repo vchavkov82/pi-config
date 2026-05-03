@@ -60,7 +60,8 @@
       "source": "git:github.com/vchavkov82/pi-autoresearch",
       "skills": []
     },
-    "/home/vchavkov/.config/brain/.agents/obscura-plugin-pi"
+    "/home/vchavkov/.config/brain/.agents/obscura-plugin-pi",
+    "npm:pi-subagents"
   ],
   "hideThinkingBlock": false,
   "extensions": [
