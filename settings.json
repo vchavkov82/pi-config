@@ -6,7 +6,7 @@
   "enabledModels": [
     "sap-anthropic/anthropic--claude-4.6-opus",
     "sap-anthropic/anthropic--claude-4.6-sonnet",
-    "sap-anthropic/anthropic--claude-4.6-haiku",
+    "sap-anthropic/anthropic--claude-4.5-haiku",
     "bosch-claude-code/claude-sonnet-4-6",
     "bosch-claude-code/claude-opus-4-6",
     "bosch-claude-code/claude-haiku-4-5",

@@ -2,7 +2,7 @@
   "providers": {
     "sap-anthropic": {
       "baseUrl": "http://localhost:6655/anthropic",
-      "apiKey": "ANTHROPIC_AUTH_TOKEN",
+      "apiKey": "!node -e \"process.stdout.write(require('/home/vchavkov/.pi/agent/auth.json').anthropic.key)\"",
       "api": "anthropic-messages",
       "compat": {
         "supportsEagerToolInputStreaming": false
@@ -31,8 +31,8 @@
           "maxTokens": 64000
         },
         {
-          "id": "anthropic--claude-4.6-haiku",
-          "name": "Claude 4.6 Haiku (SAP)",
+          "id": "anthropic--claude-4.5-haiku",
+          "name": "Claude 4.5 Haiku (SAP)",
           "reasoning": false,
           "input": [
             "text",
@@ -46,7 +46,7 @@
     "sap-openai": {
       "baseUrl": "http://localhost:6655/openai/v1",
       "api": "openai-completions",
-      "apiKey": "ANTHROPIC_AUTH_TOKEN",
+      "apiKey": "!node -e \"process.stdout.write(require('/home/vchavkov/.pi/agent/auth.json').anthropic.key)\"",
       "authHeader": true,
       "compat": {
         "supportsDeveloperRole": false,
