@@ -66,6 +66,8 @@
 - **Project configs**: Inherit models, define only project packages
 - **Skills**: All on-demand (`disable-model-invocation: true`)
 
+`enabledModels` may intentionally repeat the same provider/model ID with different `:<thinking>` suffixes, such as `openai-codex/gpt-5.5:high` and `openai-codex/gpt-5.5:low`. Pi treats these as distinct scoped model flavours for Ctrl+P cycling, while exact duplicate provider/model/thinking entries are still collapsed.
+
 ## Changes to Models
 
 To add/remove models globally:
