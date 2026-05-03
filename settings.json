@@ -1,6 +1,6 @@
 {
   "lastChangelogVersion": "0.72.1",
-  "defaultProvider": "sap-openai",
+  "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5",
   "defaultThinkingLevel": "high",
   "enabledModels": [
