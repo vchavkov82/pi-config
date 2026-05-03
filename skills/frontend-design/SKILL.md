@@ -8,6 +8,8 @@ This skill guides creation of distinctive, production-grade frontend interfaces 
 
 The user provides frontend requirements: a component, page, application, or interface to build. They may include context about the purpose, audience, or technical constraints.
 
+For future edits to this skill or its design-reference integrations, run the lightweight regression gate in `REGRESSION-CHECKLIST.md`.
+
 disable-model-invocation: true
 ---
 
