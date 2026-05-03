@@ -4,11 +4,14 @@
       "baseUrl": "http://localhost:6655/anthropic",
       "apiKey": "ANTHROPIC_AUTH_TOKEN",
       "api": "anthropic-messages",
+      "compat": {
+        "supportsEagerToolInputStreaming": false
+      },
       "models": [
         {
           "id": "anthropic--claude-4.5-opus",
           "name": "Claude 4.5 Opus (SAP)",
-          "reasoning": true,
+          "reasoning": false,
           "input": ["text", "image"],
           "contextWindow": 200000,
           "maxTokens": 64000
@@ -16,7 +19,7 @@
         {
           "id": "anthropic--claude-4.5-sonnet",
           "name": "Claude 4.5 Sonnet (SAP)",
-          "reasoning": true,
+          "reasoning": false,
           "input": ["text", "image"],
           "contextWindow": 200000,
           "maxTokens": 64000
@@ -24,7 +27,7 @@
         {
           "id": "anthropic--claude-4.5-haiku",
           "name": "Claude 4.5 Haiku (SAP)",
-          "reasoning": true,
+          "reasoning": false,
           "input": ["text", "image"],
           "contextWindow": 200000,
           "maxTokens": 64000
