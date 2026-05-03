@@ -1,17 +1,21 @@
 {
   "lastChangelogVersion": "0.72.1",
+<<<<<<< Updated upstream
   "defaultProvider": "sap-anthropic",
 <<<<<<< Updated upstream
   "defaultModel": "anthropic--claude-4.5-sonnet",
 =======
   "defaultModel": "anthropic--claude-4.6-opus",
 >>>>>>> Stashed changes
+=======
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.5",
+>>>>>>> Stashed changes
   "defaultThinkingLevel": "high",
   "enabledModels": [
-    "sap-anthropic/anthropic--claude-4.6-sonnet",
-    "sap-anthropic/anthropic--claude-4.6-opus",
-    "sap-anthropic/anthropic--claude-4.5-haiku",
+    "sap-anthropic/anthropic--claude-4.5-opus",
     "sap-anthropic/anthropic--claude-4.5-sonnet",
+    "sap-anthropic/anthropic--claude-4.5-haiku",
     "bosch-claude-code/claude-sonnet-4-6",
     "bosch-claude-code/claude-opus-4-6",
     "bosch-claude-code/claude-haiku-4-5",

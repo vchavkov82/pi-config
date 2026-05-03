@@ -2,14 +2,12 @@
   "providers": {
     "sap-anthropic": {
       "baseUrl": "http://localhost:6655/anthropic",
-      "api": "anthropic-messages",
       "apiKey": "ANTHROPIC_AUTH_TOKEN",
-      "authHeader": true,
+      "api": "anthropic-messages",
       "models": [
-        { "id": "anthropic--claude-4.6-sonnet", "name": "Claude 4.6 Sonnet (SAP)" },
-        { "id": "anthropic--claude-4.6-opus",   "name": "Claude 4.6 Opus (SAP)" },
-        { "id": "anthropic--claude-4.5-sonnet", "name": "Claude 4.5 Sonnet (SAP)" },
-        { "id": "anthropic--claude-4.5-haiku",  "name": "Claude 4.5 Haiku (SAP)" }
+        { "id": "anthropic--claude-4.5-opus" },
+        { "id": "anthropic--claude-4.5-sonnet" },
+        { "id": "anthropic--claude-4.5-haiku" }
       ]
     },
     "sap-openai": {
