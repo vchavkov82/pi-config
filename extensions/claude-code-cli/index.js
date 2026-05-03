@@ -303,24 +303,6 @@ const BOSCH_MODELS = [
     maxTokens: 64_000,
   },
   {
-    id: 'claude-sonnet-4-5',
-    name: 'Claude Sonnet 4.5 (Bosch via Claude Code)',
-    reasoning: true,
-    input: ['text', 'image'],
-    cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 },
-    contextWindow: 1_000_000,
-    maxTokens: 64_000,
-  },
-  {
-    id: 'claude-sonnet-4-5-20250929',
-    name: 'Claude Sonnet 4.5 20250929 (Bosch via Claude Code)',
-    reasoning: true,
-    input: ['text', 'image'],
-    cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 },
-    contextWindow: 1_000_000,
-    maxTokens: 64_000,
-  },
-  {
     id: 'claude-haiku-4-5-20251001',
     name: 'Claude Haiku 4.5 20251001 (Bosch via Claude Code)',
     reasoning: true,
@@ -330,7 +312,7 @@ const BOSCH_MODELS = [
     maxTokens: 64_000,
   },
   {
-    id: 'claude-sonnet-4-20250514',
+    id: 'claude-sonnet-4@20250514',
     name: 'Claude Sonnet 4 20250514 (Bosch via Claude Code)',
     reasoning: false,
     input: ['text', 'image'],
