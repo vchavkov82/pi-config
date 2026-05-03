@@ -4,6 +4,7 @@
       "baseUrl": "http://localhost:6655/anthropic",
       "api": "anthropic-messages",
       "apiKey": "ANTHROPIC_AUTH_TOKEN",
+      "authHeader": true,
       "models": [
         { "id": "anthropic--claude-4.6-sonnet", "name": "Claude 4.6 Sonnet (SAP)" },
         { "id": "anthropic--claude-4.6-opus",   "name": "Claude 4.6 Opus (SAP)" },
