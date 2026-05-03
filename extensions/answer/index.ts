@@ -73,7 +73,7 @@ Example output:
 }`;
 
 const HAIKU_PROVIDER = "sap-anthropic";
-const HAIKU_MODEL_ID = "anthropic--claude-4.5-haiku";
+const HAIKU_MODEL_ID = "anthropic--claude-4.6-haiku";
 
 /**
  * Prefer Haiku for extraction (fast, cheap), otherwise fallback to the current model.

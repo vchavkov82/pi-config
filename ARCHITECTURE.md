@@ -51,9 +51,9 @@
 ```json
 {
   "enabledModels": [
-    "sap-anthropic/anthropic--claude-4.5-opus",
-    "sap-anthropic/anthropic--claude-4.5-sonnet",
-    "sap-anthropic/anthropic--claude-4.5-haiku",
+    "sap-anthropic/anthropic--claude-4.6-opus",
+    "sap-anthropic/anthropic--claude-4.6-sonnet",
+    "sap-anthropic/anthropic--claude-4.6-haiku",
     ...
   ],
   "packages": [...]

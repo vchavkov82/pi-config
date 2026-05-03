@@ -26,7 +26,7 @@ if [ ! -f "$EXPECTED_DIR/settings.json" ]; then
   cat > "$EXPECTED_DIR/settings.json" << 'EOF'
 {
   "defaultProvider": "sap-anthropic",
-  "defaultModel": "anthropic--claude-4.5-sonnet",
+  "defaultModel": "anthropic--claude-4.6-sonnet",
   "defaultThinkingLevel": "medium",
   "packages": [
     "git:github.com/nicobailon/pi-mcp-adapter",

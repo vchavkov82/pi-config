@@ -201,7 +201,7 @@ subagent({ name: "💬 Planner", agent: "planner", interactive: true, task: "Pla
 subagent({ name: "Iterate", fork: true, task: "Fix the bug where..." })
 
 // Override agent defaults when needed
-subagent({ name: "Worker", agent: "worker", model: "sap-anthropic/anthropic--claude-4.5-haiku", task: "Quick fix..." })
+subagent({ name: "Worker", agent: "worker", model: "sap-anthropic/anthropic--claude-4.6-haiku", task: "Quick fix..." })
 
 // Parallel execution — just call subagent multiple times, they all run concurrently
 subagent({ name: "Scout: Auth", agent: "scout", task: "Analyze auth module" })
