@@ -1,8 +1,8 @@
 {
   "lastChangelogVersion": "0.72.1",
   "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.5",
-  "defaultThinkingLevel": "xhigh",
+  "defaultModel": "gpt-5.4",
+  "defaultThinkingLevel": "high",
   "enabledModels": [
     "sap-anthropic/anthropic--claude-4.5-opus",
     "sap-anthropic/anthropic--claude-4.5-sonnet",
@@ -35,8 +35,7 @@
       "source": "git:github.com/vchavkov82/pi-autoresearch",
       "skills": []
     },
-    "/home/vchavkov/.config/brain/.agents/obscura-plugin-pi",
-    "/home/vchavkov/.config/brain/.agents/_design/huashu-design"
+    "/home/vchavkov/.config/brain/.agents/obscura-plugin-pi"
   ],
   "hideThinkingBlock": false,
   "extensions": [
@@ -45,6 +44,8 @@
     "+extensions/footer-inline-status/index.ts",
     "-extensions/model-status/index.ts"
   ],
-  "skills": [],
+  "skills": [
+    "!/home/vchavkov/.agents/skills/**"
+  ],
   "enableSkillCommands": true
 }
