@@ -38,7 +38,6 @@
       "source": "git:github.com/vchavkov82/pi-autoresearch",
       "skills": []
     },
-    "/home/vchavkov/.config/brain/.agents/openspec-pi",
     "/home/vchavkov/.config/brain/.agents/obscura-plugin-pi",
     "/home/vchavkov/.config/brain/.agents/_design/huashu-design"
   ],
@@ -49,8 +48,6 @@
     "+extensions/footer-inline-status/index.ts",
     "-extensions/model-status/index.ts"
   ],
-  "skills": [
-    "/home/vchavkov/.config/brain/.agents/skills/grill-me"
-  ],
+  "skills": [],
   "enableSkillCommands": true
 }
