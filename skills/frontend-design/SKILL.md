@@ -10,9 +10,6 @@ The user provides frontend requirements: a component, page, application, or inte
 
 For future edits to this skill or its design-reference integrations, run the lightweight regression gate in `REGRESSION-CHECKLIST.md`.
 
-disable-model-invocation: true
----
-
 ## Context Gathering
 
 Design skills produce generic output without project context. Before doing design work:
@@ -20,9 +17,6 @@ Design skills produce generic output without project context. Before doing desig
 1. **Check loaded instructions**: If your system prompt already contains a **Design Context** section, proceed.
 2. **Check `.design/impeccable.md`**: Read from the project root. If it exists with required context, proceed.
 3. **Ask the user**: If neither source has context, ask about target audience, brand personality, and aesthetic direction before designing.
-
-disable-model-invocation: true
----
 
 ## Design Thinking
 
@@ -40,9 +34,6 @@ Then implement working code (HTML/CSS/JS, React, Vue, etc.) that is:
 - Cohesive with a clear aesthetic point-of-view
 - Meticulously refined in every detail
 
-disable-model-invocation: true
----
-
 ## Brand Design References
 
 When the user says "like Stripe", "inspired by Linear", or references a specific brand, look up its design system for exact tokens (hex colors, font weights, shadow definitions, spacing).
@@ -52,19 +43,19 @@ When the user says "like Stripe", "inspired by Linear", or references a specific
 ```bash
 # List all available brands (66+)
 ls $HOME/.config/brain/.agents/_design/awesome-design-md/design-md/
-
-# Read a specific brand's design system
-cat $HOME/.config/brain/.agents/_design/awesome-design-md/design-md/<brand>/README.md
 ```
 
-**Available brands include**: linear.app, notion, vercel, supabase, cursor, stripe, airbnb, uber, spotify, apple, claude, figma, framer, hashicorp, sentry, resend, raycast, superhuman, wise, and many more.
+Use the pi `read` tool to read a specific brand's design system:
 
-If the brand README only contains a URL pointer (e.g. `https://getdesign.md/<brand>/design-md`), fetch it with `web_fetch` to get the full design tokens.
+```text
+$HOME/.config/brain/.agents/_design/awesome-design-md/design-md/<brand>/DESIGN.md
+```
+
+**Available brands include**: linear.app, notion, vercel, supabase, cursor, stripe, airbnb, uber, spotify, apple, claude, figma, framer, hashicorp, sentry, resend, raycast, superhuman, wise, and many more. Check the directory list instead of guessing names.
+
+Do not use `README.md` stubs for tokens; they often only point to getdesign.md. The local `DESIGN.md` files contain the usable palette, typography, spacing, shadow, and motion details. If a local `DESIGN.md` is missing and web tools are available, use `web_search`/`web_fetch`; otherwise ask the user for a source instead of blocking.
 
 If no brand is named, choose 1-3 relevant brand references based on the product type and desired tone.
-
-disable-model-invocation: true
----
 
 ## Design System Generator
 
@@ -85,9 +76,6 @@ python3 $HOME/.config/brain/.agents/skills/ui-ux-pro-max/scripts/search.py "<key
 ```
 
 Use `--design-system` first for full recommendations, then `--domain` to deep-dive any dimension. Available domains: product, style, color, typography, landing, chart, ux, google-fonts, react, web, prompt.
-
-disable-model-invocation: true
----
 
 ## Frontend Aesthetics Guidelines
 
@@ -173,9 +161,6 @@ Focus on high-impact moments: one well-orchestrated page load with staggered rev
 - DO NOT use rounded rectangles with generic drop shadows — safe, forgettable, could be any AI output
 - DO NOT put large icons with rounded corners above every heading — makes sites look templated
 
-disable-model-invocation: true
----
-
 ## Interface Polish Principles
 
 Apply these details that compound into a great experience:
@@ -197,9 +182,6 @@ Apply these details that compound into a great experience:
 - Skip animation on page load: `initial={false}` on `AnimatePresence`
 - Never use `transition: all` — always specify exact properties
 - Use `will-change` sparingly, only for `transform`, `opacity`, `filter`
-
-disable-model-invocation: true
----
 
 ## UX Quality Checklist
 
@@ -230,9 +212,6 @@ disable-model-invocation: true
 - [ ] Animations 150-300ms with ease-out
 - [ ] No nested scroll regions interfering with main scroll
 
-disable-model-invocation: true
----
-
 ## AI Slop Test
 
 **Critical quality check**: If you showed this interface to someone and said "AI made this," would they believe you immediately? If yes, that's the problem.
@@ -240,9 +219,6 @@ disable-model-invocation: true
 A distinctive interface should make someone ask "how was this made?" not "which AI made this?"
 
 Watch for: overused font families, cliché color schemes (purple gradients on white), predictable layouts, identical card grids, gradient text, side-stripe borders, glassmorphism decoration, hero metric layout templates (big number + small label + supporting stats), and cookie-cutter component patterns.
-
-disable-model-invocation: true
----
 
 ## Implementation Principles
 
