@@ -1,5 +1,5 @@
 ---
-description: Enable systemd git auto-sync for the current repo and verify with a manual sync
+description: Enable canonical git auto-sync for the current repo and verify with a manual sync
 ---
 Enable the current repository for the portable systemd-based git auto-commit/auto-sync solution, then run a manual verification sync.
 
@@ -8,9 +8,10 @@ Enable the current repository for the portable systemd-based git auto-commit/aut
 The automation is defined in the brain repo and should be portable to other Linux systems:
 
 - Units: `~/.config/brain/scripts/systemd/git-sync.service`, `git-sync.timer`, `git-submodule-sync.service`, `git-submodule-sync.timer`
-- Installer: `~/.config/brain/scripts/systemd/install-git-sync.sh`
+- Canonical entrypoint: `~/.config/brain/scripts/git/git-autosync.sh`
 - Repo list: `~/.config/brain/scripts/git/auto-commit-repos.txt`
-- Scripts: `~/.config/brain/scripts/git/git-sync.sh`, `git-submodule-sync.sh`, `git-sync-register.sh`
+- Sync scripts called by the wrapper/units: `git-sync.sh`, `git-submodule-sync.sh`
+- Shortcuts when installed: `gas`, `gas-now`, `gas-register`, `gas-status`, `gas-logs`, `gs`, `gss`
 
 ## Steps
 
@@ -21,40 +22,37 @@ The automation is defined in the brain repo and should be portable to other Linu
    echo "REPO=$REPO"
    ```
 
-2. Ensure the systemd user units are installed from the version-controlled brain files:
+2. Install/refresh the systemd user units and enable both timers:
    ```bash
-   ~/.config/brain/scripts/systemd/install-git-sync.sh
+   ~/.config/brain/scripts/git/git-autosync.sh install
+   ~/.config/brain/scripts/git/git-autosync.sh enable
    ```
 
 3. Register the current repo with the auto-sync repo list:
    ```bash
-   ~/.config/brain/scripts/git/git-sync-register.sh add
+   ~/.config/brain/scripts/git/git-autosync.sh register "$REPO"
    ```
 
-4. Show the current repos list:
+4. Show the current repos list and health:
    ```bash
-   REPOS_FILE=~/.config/brain/scripts/git/auto-commit-repos.txt
-   cat "$REPOS_FILE"
+   ~/.config/brain/scripts/git/git-autosync.sh list
+   ~/.config/brain/scripts/git/git-autosync.sh check
    ```
 
 5. Verify timers are enabled and active:
    ```bash
-   systemctl --user daemon-reload
-   systemctl --user enable --now git-sync.timer git-submodule-sync.timer
-   systemctl --user list-timers 'git-*' --no-pager
-   systemctl --user status git-sync.service git-sync.timer --no-pager
-   systemctl --user status git-submodule-sync.service git-submodule-sync.timer --no-pager
+   ~/.config/brain/scripts/git/git-autosync.sh status
+   systemctl --user status git-sync.timer git-submodule-sync.timer --no-pager
    ```
 
-6. Run manual verification through systemd, not by bypassing the units:
+6. Run manual verification through the canonical wrapper:
    ```bash
-   systemctl --user start git-submodule-sync.service
-   systemctl --user start git-sync.service
+   ~/.config/brain/scripts/git/git-autosync.sh now
    ```
 
 7. Inspect recent logs:
    ```bash
-   journalctl --user -u git-submodule-sync.service -u git-sync.service -n 120 --no-pager
+   ~/.config/brain/scripts/git/git-autosync.sh logs 120
    ```
 
 8. Confirm the repository is clean, including submodule state:
@@ -72,5 +70,5 @@ The automation is defined in the brain repo and should be portable to other Linu
    - whether the repo was registered
    - whether both timers are enabled/active
    - the next scheduled timer runs
-   - whether manual systemd-triggered sync completed
+   - whether manual sync completed through `git-autosync.sh now`
    - final `git status --short --ignore-submodules=none`
