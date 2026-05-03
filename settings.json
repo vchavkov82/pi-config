@@ -1,24 +1,22 @@
 {
   "lastChangelogVersion": "0.72.1",
   "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5",
-  "defaultThinkingLevel": "high",
+  "defaultModel": "gpt-5.5",
+  "defaultThinkingLevel": "xhigh",
   "enabledModels": [
-    "claude-opus-4-6",
-    "claude-sonnet-4-6",
-    "claude-haiku-4-5",
-    "anthropic/claude-opus-4-6",
-    "anthropic/claude-sonnet-4-6",
-    "anthropic/claude-haiku-4-5",
     "sap-anthropic/anthropic--claude-4.6-sonnet",
     "sap-anthropic/anthropic--claude-4.6-opus",
     "sap-anthropic/anthropic--claude-4.5-haiku",
+    "sap-anthropic/anthropic--claude-4.5-sonnet",
+    "bosch-claude-code/claude-sonnet-4-6",
+    "bosch-claude-code/claude-opus-4-6",
+    "bosch-claude-code/claude-haiku-4-5",
+    "bosch-claude-code/claude-sonnet-4-5",
     "openai-codex/gpt-5.5",
     "openai-codex/gpt-5.4",
     "openai-codex/gpt-5.4-mini",
     "sap-openai/gpt-5",
-    "sap-openai/gpt-5-mini",
-    "sap-anthropic/anthropic--claude-4.5-sonnet"
+    "sap-openai/gpt-5-mini"
   ],
   "packages": [
     "git:github.com/vchavkov82/pi-smart-sessions",
@@ -44,7 +42,7 @@
   "hideThinkingBlock": false,
   "extensions": [
     "+extensions/cmux/index.ts",
-    "+extensions/claude-code-cli/index.mjs",
+    "+extensions/claude-code-cli/index.js",
     "+extensions/footer-inline-status/index.ts",
     "-extensions/model-status/index.ts"
   ],

@@ -25,8 +25,8 @@ if [ ! -f "$EXPECTED_DIR/settings.json" ]; then
   echo "Creating settings.json..."
   cat > "$EXPECTED_DIR/settings.json" << 'EOF'
 {
-  "defaultProvider": "claude-code",
-  "defaultModel": "claude-sonnet-4-6",
+  "defaultProvider": "sap-anthropic",
+  "defaultModel": "anthropic--claude-4.6-sonnet",
   "defaultThinkingLevel": "medium",
   "packages": [
     "git:github.com/nicobailon/pi-mcp-adapter",
@@ -51,7 +51,7 @@ if [ ! -f "$EXPECTED_DIR/settings.json" ]; then
   "hideThinkingBlock": false,
   "extensions": [
     "+extensions/cmux/index.ts",
-    "+extensions/claude-code-cli/index.mjs"
+    "+extensions/claude-code-cli/index.js"
   ]
 }
 EOF

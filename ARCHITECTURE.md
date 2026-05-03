@@ -61,7 +61,7 @@
 
 ## Current Setup
 
-- **Global models**: SAP proxy provider (`sap-anthropic/*`) + Codex (`openai-codex/*`)
+- **Global models**: SAP proxy provider (`sap-anthropic/*`), Bosch Claude Code provider (`bosch-claude-code/*`), SAP OpenAI (`sap-openai/*`), and Codex (`openai-codex/*`)
 - **Project configs**: Inherit models, define only project packages
 - **Skills**: All on-demand (`disable-model-invocation: true`)
 
