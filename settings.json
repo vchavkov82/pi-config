@@ -43,15 +43,30 @@
     "sap-openai/gpt-5-mini"
   ],
   "packages": [
-    "git:github.com/vchavkov82/pi-smart-sessions",
+    {
+      "source": "git:github.com/vchavkov82/pi-smart-sessions",
+      "skills": []
+    },
     {
       "source": "git:github.com/pasky/chrome-cdp-skill",
       "skills": []
     },
-    "git:github.com/vchavkov82/pi-interactive-subagents",
-    "git:github.com/vchavkov82/pi-parallel",
-    "git:github.com/badlogic/pi-diff-review",
-    "git:github.com/nicobailon/pi-mcp-adapter",
+    {
+      "source": "git:github.com/vchavkov82/pi-interactive-subagents",
+      "skills": []
+    },
+    {
+      "source": "git:github.com/vchavkov82/pi-parallel",
+      "skills": []
+    },
+    {
+      "source": "git:github.com/badlogic/pi-diff-review",
+      "skills": []
+    },
+    {
+      "source": "git:github.com/nicobailon/pi-mcp-adapter",
+      "skills": []
+    },
     {
       "source": "git:github.com/HazAT/glimpse",
       "skills": []
@@ -60,8 +75,15 @@
       "source": "git:github.com/vchavkov82/pi-autoresearch",
       "skills": []
     },
-    "/home/vchavkov/.config/brain/.agents/obscura-plugin-pi",
-    "npm:pi-subagents"
+    {
+      "source": "/home/vchavkov/.config/brain/.agents/obscura-plugin-pi",
+      "skills": []
+    },
+    {
+      "source": "npm:pi-subagents",
+      "extensions": [],
+      "skills": []
+    }
   ],
   "hideThinkingBlock": false,
   "extensions": [
@@ -71,7 +93,7 @@
     "-extensions/model-status/index.ts"
   ],
   "skills": [
-    "!/home/vchavkov/.agents/skills/**"
+    "!**"
   ],
-  "enableSkillCommands": true
+  "enableSkillCommands": false
 }
