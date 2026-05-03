@@ -76,8 +76,7 @@
       "skills": []
     },
     {
-      "source": "/home/vchavkov/.config/brain/.agents/obscura-plugin-pi",
-      "skills": []
+      "source": "/home/vchavkov/.config/brain/.agents/obscura-plugin-pi"
     },
     {
       "source": "npm:pi-subagents",
