@@ -12,7 +12,10 @@
           "id": "anthropic--claude-4.5-opus",
           "name": "Claude 4.5 Opus (SAP)",
           "reasoning": false,
-          "input": ["text", "image"],
+          "input": [
+            "text",
+            "image"
+          ],
           "contextWindow": 200000,
           "maxTokens": 64000
         },
@@ -20,7 +23,10 @@
           "id": "anthropic--claude-4.5-sonnet",
           "name": "Claude 4.5 Sonnet (SAP)",
           "reasoning": false,
-          "input": ["text", "image"],
+          "input": [
+            "text",
+            "image"
+          ],
           "contextWindow": 200000,
           "maxTokens": 64000
         },
@@ -28,7 +34,10 @@
           "id": "anthropic--claude-4.5-haiku",
           "name": "Claude 4.5 Haiku (SAP)",
           "reasoning": false,
-          "input": ["text", "image"],
+          "input": [
+            "text",
+            "image"
+          ],
           "contextWindow": 200000,
           "maxTokens": 64000
         }
@@ -39,12 +48,28 @@
       "api": "openai-completions",
       "apiKey": "ANTHROPIC_AUTH_TOKEN",
       "authHeader": true,
-      "compat": { "supportsDeveloperRole": false, "supportsReasoningEffort": false },
+      "compat": {
+        "supportsDeveloperRole": false,
+        "supportsReasoningEffort": false
+      },
       "models": [
-        { "id": "gpt-5",        "name": "GPT-5 (SAP)",        "reasoning": true },
-        { "id": "gpt-5-mini",   "name": "GPT-5 Mini (SAP)" },
-        { "id": "gpt-4.1",      "name": "GPT-4.1 (SAP)" },
-        { "id": "gpt-4.1-mini", "name": "GPT-4.1 Mini (SAP)" }
+        {
+          "id": "gpt-5",
+          "name": "GPT-5 (SAP)",
+          "reasoning": true
+        },
+        {
+          "id": "gpt-5-mini",
+          "name": "GPT-5 Mini (SAP)"
+        },
+        {
+          "id": "gpt-4.1",
+          "name": "GPT-4.1 (SAP)"
+        },
+        {
+          "id": "gpt-4.1-mini",
+          "name": "GPT-4.1 Mini (SAP)"
+        }
       ]
     }
   }
