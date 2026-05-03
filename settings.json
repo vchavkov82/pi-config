@@ -1,8 +1,8 @@
 {
   "lastChangelogVersion": "0.72.1",
-  "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.4",
-  "defaultThinkingLevel": "high",
+  "defaultProvider": "sap-anthropic",
+  "defaultModel": "anthropic--claude-4.5-sonnet",
+  "defaultThinkingLevel": "medium",
   "enabledModels": [
     "sap-anthropic/anthropic--claude-4.5-opus",
     "sap-anthropic/anthropic--claude-4.5-sonnet",
