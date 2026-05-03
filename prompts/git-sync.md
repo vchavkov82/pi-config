@@ -1,7 +1,9 @@
 ---
 description: Manually run canonical git sync — auto-commit, pull/rebase, push, and refresh submodules
 ---
-Run a full manual git sync through the canonical brain entrypoint. Do not reimplement the sync steps in the prompt.
+Run a full manual git sync through the maintained canonical brain entrypoint. Do not reimplement the sync steps in the prompt.
+
+The canonical flow is responsible for resolving merge/rebase conflicts, auto-committing local changes, pulling/rebasing, pushing, refreshing writable submodules, updating parent submodule pointers, and leaving `git status --short --ignore-submodules=none` clean. The agent should invoke and verify that maintained flow, not spell out direct `git add`, `git commit`, `git pull`, or `git push` command sequences.
 
 ## Steps
 
@@ -17,7 +19,7 @@ Run a full manual git sync through the canonical brain entrypoint. Do not reimpl
    ~/.config/brain/scripts/git/git-autosync.sh register "$REPO"
    ```
 
-3. Run the manual sync. This invokes the same maintained flow used by the timers, including writable submodule ordering and parent submodule pointer handling:
+3. Run the manual sync. This invokes the same maintained flow used by the timers, including conflict resolution, auto-commit, pull/rebase, push, writable submodule ordering, and parent submodule pointer handling:
    ```bash
    ~/.config/brain/scripts/git/git-autosync.sh now
    ```
@@ -27,7 +29,7 @@ Run a full manual git sync through the canonical brain entrypoint. Do not reimpl
    ~/.config/brain/scripts/git/git-autosync.sh logs 120
    ```
 
-5. Show final status, including submodules:
+5. Verify the maintained flow left the repo clean, including submodules:
    ```bash
    git status --short --ignore-submodules=none
    ```
