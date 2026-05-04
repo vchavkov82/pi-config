@@ -37,7 +37,7 @@ For each finding, classify its scope:
 
 | Scope | Where It Lives | Example |
 |-------|---------------|---------|
-| **Global** | `~/.pi/agent/` (AGENTS.md, skills, agents) | "Subagent worker should always run tests before committing" |
+| **Global** | `$HOME/.pi/agent/` (AGENTS.md, skills, agents) | "Subagent worker should always run tests before committing" |
 | **Project** | Project's `.claude/`, CLAUDE.md, or codebase | "Add integration test for the auth endpoint we just fixed" |
 
 ## Step 4: Present Suggestions
