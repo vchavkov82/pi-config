@@ -21,9 +21,9 @@ cd $HOME/.pi/agent && ./setup.sh
 pi-config is tracked as a git submodule at `.agents/pi-config`. On a new machine:
 
 ```bash
-git clone --recurse-submodules git@github.com:vchavkov82/brain ~/.config/brain
-brain setup   # symlinks ~/.pi/agent -> .agents/pi-config
-cd ~/.pi/agent && ./setup.sh
+git clone --recurse-submodules git@github.com:vchavkov82/brain $HOME/.config/brain
+brain setup   # symlinks $HOME/.pi/agent -> .agents/pi-config
+cd $HOME/.pi/agent && ./setup.sh
 ```
 
 ### What `setup.sh` does
