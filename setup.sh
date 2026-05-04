@@ -28,30 +28,45 @@ if [ ! -f "$EXPECTED_DIR/settings.json" ]; then
   "defaultProvider": "sap-anthropic",
   "defaultModel": "anthropic--claude-4.6-sonnet",
   "defaultThinkingLevel": "medium",
+  "enabledModels": [
+    "sap-anthropic/anthropic--claude-4.6-sonnet",
+    "sap-anthropic/anthropic--claude-4.6-opus",
+    "sap-anthropic/anthropic--claude-4.5-haiku",
+    "openai-codex/gpt-5.5",
+    "openai-codex/gpt-5.4",
+    "openai-codex/gpt-5.4-mini",
+    "sap-openai/gpt-5",
+    "sap-openai/gpt-5-mini",
+    "sap-anthropic/anthropic--claude-4.5-sonnet"
+  ],
   "packages": [
+    "git:github.com/vchavkov82/pi-smart-sessions",
+    {
+      "source": "git:github.com/pasky/chrome-cdp-skill",
+      "skills": []
+    },
+    "git:github.com/vchavkov82/pi-interactive-subagents",
+    "git:github.com/vchavkov82/pi-parallel",
+    "git:github.com/badlogic/pi-diff-review",
     "git:github.com/nicobailon/pi-mcp-adapter",
     {
-      "source": "git:github.com/HazAT/pi-smart-sessions",
-      "extensions": [
-        "+extensions/smart-sessions.ts"
-      ]
+      "source": "git:github.com/HazAT/glimpse",
+      "skills": []
     },
     {
-      "source": "git:github.com/HazAT/pi-parallel",
-      "extensions": [
-        "+extension/index.ts"
-      ]
+      "source": "git:github.com/vchavkov82/pi-autoresearch",
+      "skills": []
     },
-    "git:github.com/pasky/chrome-cdp-skill",
-    "git:github.com/HazAT/glimpse",
-    "git:github.com/HazAT/pi-interactive-subagents",
-    "git:github.com/HazAT/pi-autoresearch",
-    "git:github.com/badlogic/pi-diff-review"
+    "/home/vchavkov/.config/brain/.agents/openspec-pi",
+    "/home/vchavkov/.config/brain/.agents/obscura-plugin-pi",
+    "/home/vchavkov/.config/brain/.agents/huashu-design"
   ],
   "hideThinkingBlock": false,
   "extensions": [
     "+extensions/cmux/index.ts",
-    "+extensions/claude-code-cli/index.js"
+    "+extensions/claude-code-cli/index.mjs",
+    "+extensions/footer-inline-status/index.ts",
+    "-extensions/model-status/index.ts"
   ]
 }
 EOF
