@@ -7,9 +7,9 @@ Enable the current repository for the portable systemd-based git auto-commit/aut
 
 The automation is defined in the brain repo and should be portable to other Linux systems:
 
-- Units: `~/.config/brain/scripts/systemd/git-sync.service`, `git-sync.timer`, `git-submodule-sync.service`, `git-submodule-sync.timer`
-- Canonical entrypoint: `~/.config/brain/scripts/git/git-autosync.sh`
-- Repo list: `~/.config/brain/scripts/git/auto-commit-repos.txt`
+- Units: `$HOME/.config/brain/scripts/systemd/git-sync.service`, `git-sync.timer`, `git-submodule-sync.service`, `git-submodule-sync.timer`
+- Canonical entrypoint: `$HOME/.config/brain/scripts/git/git-autosync.sh`
+- Repo list: `$HOME/.config/brain/scripts/git/auto-commit-repos.txt`
 - Sync scripts called by the wrapper/units: `git-sync.sh`, `git-submodule-sync.sh`
 - Shortcuts when installed: `gas`, `gas-now`, `gas-register`, `gas-status`, `gas-logs`, `gs`, `gss`
 
