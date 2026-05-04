@@ -72,6 +72,6 @@ $HOME/src/<project>/.pi/                ← PROJECT-SPECIFIC (minimal)
 
 To add/remove models globally:
 
-1. Edit `~/.config/brain/.agents/pi-config/settings.json`
+1. Edit `$HOME/.config/brain/.agents/pi-config/settings.json`
 2. Commit and push to `pi-config` repo
 3. All projects automatically inherit the change
