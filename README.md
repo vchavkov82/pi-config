@@ -61,7 +61,7 @@ Pick up all config changes by restarting pi.
 ## Updating Your Local Config
 
 ```bash
-cd ~/.pi/agent && git pull
+cd $HOME/.pi/agent && git pull
 ```
 
 ---
