@@ -1,7 +1,7 @@
 {
   "lastChangelogVersion": "0.72.1",
-  "defaultProvider": "sap-anthropic",
-  "defaultModel": "anthropic--claude-4.6-sonnet",
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.5",
   "defaultThinkingLevel": "high",
   "allowedCommandPrefixes": [
     "pass",
@@ -101,10 +101,7 @@
       "extensions": [],
       "skills": []
     },
-    "git:github.com/HazAT/pi-smart-sessions",
-    "git:github.com/HazAT/pi-parallel",
-    "git:github.com/HazAT/pi-interactive-subagents",
-    "git:github.com/HazAT/pi-autoresearch"
+    "git:github.com/HazAT/pi-smart-sessions"
   ],
   "hideThinkingBlock": false,
   "extensions": [
