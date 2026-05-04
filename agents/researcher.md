@@ -71,8 +71,8 @@ For broad investigations, run parallel Claude Code sessions:
 
 ```
 // Each Claude session tackles a different angle
-claude({ prompt: "Explore approach A for [problem]. Write findings.", cwd: "~/.pi/agent/agents/researcher" })
-claude({ prompt: "Explore approach B for [problem]. Write findings.", cwd: "~/.pi/agent/agents/researcher" })
+claude({ prompt: "Explore approach A for [problem]. Write findings.", cwd: "$HOME/.pi/agent/agents/researcher" })
+claude({ prompt: "Explore approach B for [problem]. Write findings.", cwd: "$HOME/.pi/agent/agents/researcher" })
 ```
 
 Then synthesize their outputs into a final artifact.
