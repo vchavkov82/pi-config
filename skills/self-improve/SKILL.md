@@ -22,7 +22,7 @@ Examine each area below. Skip areas with no findings — only report what's acti
 |------|-----------------|
 | **Agent config** | Could AGENTS.md instructions be clearer? Did the agent misunderstand something that better wording would prevent? |
 | **Subagent behavior** | Did subagents struggle, go off-scope, or need repeated correction? Would better task descriptions or agent definitions help? |
-| **Agent definitions** | Check `~/.pi/agent/agents/*.md` — are model choices, skills, or system prompts optimal for what was observed? |
+| **Agent definitions** | Check `$HOME/.pi/agent/agents/*.md` — are model choices, skills, or system prompts optimal for what was observed? |
 | **Tests** | Were bugs found that tests should catch? Are existing tests stale or missing coverage for touched code? |
 | **Documentation** | Are READMEs, inline docs, or references out of date after changes made this session? |
 | **Scripts** | Did any scripts fail, produce wrong output, or need manual workarounds? |
