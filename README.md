@@ -167,7 +167,7 @@ Loaded on-demand when the context matches.
 
 ## Packages
 
-Installed via `pi install`, managed in `settings.json`. In this repo, external Pi packages are checked in as git submodules under `.agents/_pi/packages/` and loaded via local relative paths from `~/.pi/agent/settings.json`.
+Installed via `pi install`, managed in `settings.json`. In this repo, external Pi packages are checked in as git submodules under `.agents/_pi/packages/` and loaded via local relative paths from `$HOME/.pi/agent/settings.json`.
 
 | Package | Description |
 |---------|-------------|
