@@ -36,7 +36,7 @@ cd $HOME/.pi/agent && ./setup.sh
 
 ### Add your API keys
 
-Create `~/.pi/agent/auth.json`:
+Create `$HOME/.pi/agent/auth.json`:
 
 ```json
 {
