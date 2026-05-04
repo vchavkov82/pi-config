@@ -2,7 +2,8 @@
   "providers": {
     "sap-anthropic": {
       "baseUrl": "http://localhost:6655/anthropic",
-      "apiKey": "!node -e \"process.stdout.write(require('/home/vchavkov/.pi/agent/auth.json').anthropic.key)\"",
+      "apiKey": "!node /home/vchavkov/.pi/agent/read-sap-token.js",
+      "authHeader": true,
       "api": "anthropic-messages",
       "compat": {
         "supportsEagerToolInputStreaming": false
@@ -46,7 +47,7 @@
     "sap-openai": {
       "baseUrl": "http://localhost:6655/openai/v1",
       "api": "openai-completions",
-      "apiKey": "!node -e \"process.stdout.write(require('/home/vchavkov/.pi/agent/auth.json').anthropic.key)\"",
+      "apiKey": "!node /home/vchavkov/.pi/agent/read-sap-token.js",
       "authHeader": true,
       "compat": {
         "supportsDeveloperRole": false,

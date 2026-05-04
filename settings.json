@@ -1,8 +1,21 @@
 {
   "lastChangelogVersion": "0.72.1",
-  "defaultProvider": "sap-openai",
-  "defaultModel": "gpt-5",
+  "defaultProvider": "sap-anthropic",
+  "defaultModel": "anthropic--claude-4.6-sonnet",
   "defaultThinkingLevel": "high",
+  "allowedCommandPrefixes": [
+    "pass",
+    "op",
+    "aws",
+    "gcloud",
+    "vault",
+    "security",
+    "gpg",
+    "bw",
+    "gopass",
+    "lpass",
+    "node"
+  ],
   "enabledModels": [
     "sap-anthropic/anthropic--claude-4.6-opus",
     "sap-anthropic/anthropic--claude-4.6-sonnet",
@@ -25,7 +38,27 @@
     "sap-openai/gpt-5:low",
     "sap-openai/gpt-5:minimal",
     "sap-openai/gpt-5:off",
-    "sap-openai/gpt-5-mini"
+    "sap-openai/gpt-5-mini",
+    "openai-codex/gpt-5.5:high",
+    "openai-codex/gpt-5.5:medium",
+    "openai-codex/gpt-5.5:low",
+    "openai-codex/gpt-5.5:minimal",
+    "openai-codex/gpt-5.5:off",
+    "openai-codex/gpt-5.4:high",
+    "openai-codex/gpt-5.4:medium",
+    "openai-codex/gpt-5.4:low",
+    "openai-codex/gpt-5.4:off",
+    "openai-codex/gpt-5.4-mini",
+    "openai/gpt-5.5:high",
+    "openai/gpt-5.5:medium",
+    "openai/gpt-5.5:low",
+    "openai/gpt-5.5:minimal",
+    "openai/gpt-5.5:off",
+    "openai/gpt-5.4:high",
+    "openai/gpt-5.4:medium",
+    "openai/gpt-5.4:low",
+    "openai/gpt-5.4:off",
+    "openai/gpt-5.4-mini"
   ],
   "packages": [
     {
