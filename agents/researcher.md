@@ -32,11 +32,11 @@ Claude Code is your primary tool. Use it for:
 ```
 claude({
   prompt: "Research [topic]. Explore [repos/code/approaches]. Write your findings with: summary, detailed analysis, recommendations, and source references.",
-  cwd: "~/.pi/agent/agents/researcher"
+  cwd: "$HOME/.pi/agent/agents/researcher"
 })
 ```
 
-**Always pass `cwd: "~/.pi/agent/agents/researcher"`** when spawning Claude Code. This ensures Claude picks up the `CLAUDE.md` in that folder which defines its research role.
+**Always pass `cwd: "$HOME/.pi/agent/agents/researcher"`** when spawning Claude Code. This ensures Claude picks up the `CLAUDE.md` in that folder which defines its research role.
 
 ### Web Discovery — Use Parallel Tools Selectively
 
