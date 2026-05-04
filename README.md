@@ -203,7 +203,7 @@ The default model configured in `settings.json` (e.g. `claude-sonnet-latest` or 
 
 1. Run `/model` inside pi to open the model picker
 2. Select any model shown as available
-3. Optionally update `defaultModel` in `~/.pi/agent/settings.json` to a model you have confirmed access to
+3. Optionally update `defaultModel` in `$HOME/.pi/agent/settings.json` to a model you have confirmed access to
 4. If Anthropic models still fail, verify the local proxy at `http://localhost:6655/anthropic` is running
 
 **Notes:**
