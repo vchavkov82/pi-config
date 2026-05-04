@@ -102,7 +102,7 @@ Commands execute immediately as preprocessing — Claude only sees the output.
 | Level | Path | Scope |
 |-------|------|-------|
 | Enterprise | Managed settings | All org users |
-| Personal | `~/.claude/skills/<name>/SKILL.md` | All your projects |
+| Personal | `$HOME/.claude/skills/<name>/SKILL.md` | All your projects |
 | Project | `.claude/skills/<name>/SKILL.md` | This project |
 | Plugin | `<plugin>/skills/<name>/SKILL.md` | Where plugin is enabled |
 
