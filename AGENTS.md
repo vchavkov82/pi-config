@@ -182,7 +182,7 @@ This isn't a rigid hierarchy — it's a team of specialists. Each agent leans ha
 
 Subagents are **async** — the tool returns immediately and the agent can keep working. When a subagent finishes, its result is steered back to the main session as an interrupt. A live widget at the bottom of the screen shows all running subagents with elapsed time and progress.
 
-The `agent` parameter loads defaults from `~/.pi/agent/agents/<name>.md`. Model, tools, skills, thinking — all inherited. Explicit params override agent defaults.
+The `agent` parameter loads defaults from `$HOME/.pi/agent/agents/<name>.md`. Model, tools, skills, thinking — all inherited. Explicit params override agent defaults.
 
 ```typescript
 // Use existing agent definitions — full transparency
