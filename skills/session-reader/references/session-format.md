@@ -154,7 +154,7 @@ Each result object contains:
 
 ```json
 {
-  "dir": "~/.pi/agent/sessions/<project>/subagent-artifacts",
+  "dir": "$HOME/.pi/agent/sessions/<project>/subagent-artifacts",
   "files": [
     {
       "inputPath": ".../<hash>_worker_input.md",
@@ -172,7 +172,7 @@ Three ways to access subagent session data:
 
 1. **Inline messages** — `details.results[].messages` (embedded in parent, always available)
 2. **Temp session file** — `details.results[].sessionFile` at `$TMPDIR/pi-subagent-session-<random>/run-<N>/` (may be cleaned up)
-3. **Persistent artifacts** — `details.artifacts.files[]` in `~/.pi/agent/sessions/<project>/subagent-artifacts/` (persistent)
+3. **Persistent artifacts** — `details.artifacts.files[]` in `$HOME/.pi/agent/sessions/<project>/subagent-artifacts/` (persistent)
 
 To read a subagent's full session, use its `sessionFile` or `artifactPaths.jsonlPath` with the same `read_session.py` script.
 
