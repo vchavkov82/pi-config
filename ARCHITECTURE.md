@@ -2,22 +2,22 @@
 
 ## Single Source of Truth
 
-**This directory** (`~/.config/brain/.agents/pi-config/`) is the **global source of truth** for all pi configuration.
+**This directory** (`$HOME/.config/brain/.agents/pi-config/`) is the **global source of truth** for all pi configuration.
 
 ## Configuration Hierarchy
 
 ```
-~/.config/brain/.agents/pi-config/  ← GLOBAL (source of truth)
+$HOME/.config/brain/.agents/pi-config/  ← GLOBAL (source of truth)
   ├── settings.json                 ← Models, packages, extensions
   ├── models.json                   ← Model definitions & providers
   ├── agents/                       ← Agent definitions
   ├── skills/                       ← Global skills
   └── extensions/                   ← Global extensions
 
-~/.config/brain/.local/<hostname>/  ← HOST-SPECIFIC (rare overrides)
+$HOME/.config/brain/.local/<hostname>/  ← HOST-SPECIFIC (rare overrides)
   └── .pi/settings.json             ← Symlink or minimal overrides
 
-~/src/<project>/.pi/                ← PROJECT-SPECIFIC (minimal)
+$HOME/src/<project>/.pi/                ← PROJECT-SPECIFIC (minimal)
   └── settings.json                 ← Only project-specific packages
 ```
 
