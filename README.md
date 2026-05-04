@@ -11,9 +11,9 @@ This is a fork of [HazAT/pi-config](https://github.com/HazAT/pi-config). The ori
 ### Option A: Standalone clone
 
 ```bash
-mkdir -p ~/.pi
-git clone git@github.com:vchavkov82/pi-config ~/.pi/agent
-cd ~/.pi/agent && ./setup.sh
+mkdir -p $HOME/.pi
+git clone git@github.com:vchavkov82/pi-config $HOME/.pi/agent
+cd $HOME/.pi/agent && ./setup.sh
 ```
 
 ### Option B: Via [brain](https://github.com/vchavkov82/brain) repo (recommended)
