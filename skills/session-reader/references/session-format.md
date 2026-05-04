@@ -10,10 +10,10 @@
 
 ## File Location and Naming
 
-Sessions are stored in `~/.pi/agent/sessions/` organized by project:
+Sessions are stored in `$HOME/.pi/agent/sessions/` organized by project:
 
 ```
-~/.pi/agent/sessions/
+$HOME/.pi/agent/sessions/
 ├── --Users-haza-Projects-sentry--/
 │   ├── 2026-02-20T20-17-15-095Z_1a6f6bc4-....jsonl
 │   ├── subagent-artifacts/
