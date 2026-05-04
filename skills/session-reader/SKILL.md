@@ -6,12 +6,12 @@ disable-model-invocation: true
 
 # Read Pi Sessions
 
-Parse pi session JSONL files into readable output. Sessions live in `~/.pi/agent/sessions/<project>/` as `.jsonl` files.
+Parse pi session JSONL files into readable output. Sessions live in `$HOME/.pi/agent/sessions/<project>/` as `.jsonl` files.
 
 ## Step 1: Find the Session
 
 ```bash
-ls -t ~/.pi/agent/sessions/*<project>*/*.jsonl | head -10
+ls -t $HOME/.pi/agent/sessions/*<project>*/*.jsonl | head -10
 ```
 
 ## Step 2: Start with Table of Contents
