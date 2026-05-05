@@ -89,5 +89,8 @@
   "skills": [
     "!**"
   ],
-  "enableSkillCommands": false
+  "enableSkillCommands": false,
+  "compaction": {
+    "enabled": true
+  }
 }
