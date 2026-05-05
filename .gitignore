@@ -8,6 +8,7 @@ bin/
 
 
 pi-crash.log
+settings.backup.*.json
 
 # Pi runtime files (created when this repo is ~/.pi/agent/)
 git/

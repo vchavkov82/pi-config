@@ -1,0 +1,16 @@
+{
+  "defaultProvider": "sap-anthropic",
+  "defaultModel": "anthropic--claude-4.6-sonnet",
+  "defaultThinkingLevel": "off",
+  "enabledModels": [
+    "sap-anthropic/anthropic--claude-4.6-sonnet",
+    "sap-openai/gpt-5"
+  ],
+  "hideThinkingBlock": true,
+  "extensions": [],
+  "skills": [],
+  "enableSkillCommands": false,
+  "compaction": { "enabled": false },
+  "packages": [],
+  "transport": "sse"
+}
