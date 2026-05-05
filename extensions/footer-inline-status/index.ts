@@ -95,7 +95,7 @@ export default function (pi: ExtensionAPI) {
           const modelName = ctx.model?.id || "no-model";
           let modelText = modelName;
           if (ctx.model?.reasoning) {
-            const thinkingLevel = latestThinkingLevel(entries) || "medium";
+            const thinkingLevel = latestThinkingLevel(entries) || pi.getThinkingLevel();
             modelText = thinkingLevel === "off" ? `${modelName} • thinking off` : `${modelName} • ${thinkingLevel}`;
           }
 

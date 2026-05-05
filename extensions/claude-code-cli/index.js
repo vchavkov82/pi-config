@@ -169,9 +169,35 @@ function createMessage(model, text, stopReason = 'stop', errorMessage) {
   return message;
 }
 
+const CLAUDE_CODE_THINKING_LEVEL_MAP = {
+  off: null,
+  minimal: null,
+};
+
+const CLAUDE_CODE_XHIGH_THINKING_LEVEL_MAP = {
+  ...CLAUDE_CODE_THINKING_LEVEL_MAP,
+  xhigh: 'xhigh',
+};
+
+const CLAUDE_CODE_MAX_THINKING_LEVEL_MAP = {
+  ...CLAUDE_CODE_THINKING_LEVEL_MAP,
+  xhigh: 'max',
+};
+
+function getClaudeEffort(model, options) {
+  if (!model.reasoning) return undefined;
+
+  const level = options?.reasoning;
+  if (!level || level === 'off') return undefined;
+
+  const mapped = model.thinkingLevelMap?.[level] ?? level;
+  return mapped === null ? undefined : mapped;
+}
+
 function streamViaClaudeCode(model, context, options) {
   const stream = new AssistantStream();
   const prompt = contextToPrompt(context);
+  const effort = getClaudeEffort(model, options);
   const args = [
     '--print',
     '--output-format',
@@ -180,8 +206,13 @@ function streamViaClaudeCode(model, context, options) {
     model.id,
     '--permission-mode',
     'acceptEdits',
-    prompt,
   ];
+
+  if (effort) {
+    args.push('--effort', effort);
+  }
+
+  args.push(prompt);
 
   const initial = createMessage(model, '');
   stream.push({ type: 'start', partial: initial });
@@ -258,6 +289,7 @@ const MODELS = [
     id: 'claude-sonnet-4-6',
     name: 'Claude Sonnet 4.6 (via Claude Code)',
     reasoning: true,
+    thinkingLevelMap: CLAUDE_CODE_THINKING_LEVEL_MAP,
     input: ['text', 'image'],
     cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 },
     contextWindow: 1_000_000,
@@ -267,6 +299,7 @@ const MODELS = [
     id: 'claude-opus-4-7',
     name: 'Claude Opus 4.7 (via Claude Code)',
     reasoning: true,
+    thinkingLevelMap: CLAUDE_CODE_XHIGH_THINKING_LEVEL_MAP,
     input: ['text', 'image'],
     cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 },
     contextWindow: 1_000_000,
@@ -279,6 +312,7 @@ const BOSCH_MODELS = [
     id: 'claude-sonnet-4-6',
     name: 'Claude Sonnet 4.6 (Bosch via Claude Code)',
     reasoning: true,
+    thinkingLevelMap: CLAUDE_CODE_THINKING_LEVEL_MAP,
     input: ['text', 'image'],
     cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 },
     contextWindow: 1_000_000,
@@ -288,6 +322,7 @@ const BOSCH_MODELS = [
     id: 'claude-opus-4-6',
     name: 'Claude Opus 4.6 (Bosch via Claude Code)',
     reasoning: true,
+    thinkingLevelMap: CLAUDE_CODE_MAX_THINKING_LEVEL_MAP,
     input: ['text', 'image'],
     cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 },
     contextWindow: 1_000_000,
@@ -297,6 +332,7 @@ const BOSCH_MODELS = [
     id: 'claude-haiku-4-5',
     name: 'Claude Haiku 4.5 (Bosch via Claude Code)',
     reasoning: true,
+    thinkingLevelMap: CLAUDE_CODE_THINKING_LEVEL_MAP,
     input: ['text', 'image'],
     cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 },
     contextWindow: 1_000_000,
@@ -306,6 +342,7 @@ const BOSCH_MODELS = [
     id: 'claude-haiku-4-5-20251001',
     name: 'Claude Haiku 4.5 20251001 (Bosch via Claude Code)',
     reasoning: true,
+    thinkingLevelMap: CLAUDE_CODE_THINKING_LEVEL_MAP,
     input: ['text', 'image'],
     cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 },
     contextWindow: 1_000_000,
