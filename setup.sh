@@ -36,6 +36,7 @@ if [ ! -f "$EXPECTED_DIR/settings.json" ]; then
     "openai-codex/gpt-5.4",
     "openai-codex/gpt-5.4-mini",
     "sap-openai/gpt-5",
+    "sap-openai/gpt-5.5",
     "sap-openai/gpt-5-mini",
     "sap-anthropic/anthropic--claude-4.5-sonnet"
   ],
