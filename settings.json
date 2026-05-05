@@ -1,32 +1,17 @@
 {
-  "lastChangelogVersion": "0.73.0",
-  "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.5",
-  "defaultThinkingLevel": "off",
-  "allowedCommandPrefixes": [
-    "pass",
-    "op",
-    "aws",
-    "gcloud",
-    "vault",
-    "security",
-    "gpg",
-    "bw",
-    "gopass",
-    "lpass",
-    "node"
-  ],
+  "defaultProvider": "sap-anthropic",
+  "defaultModel": "anthropic--claude-4.6-sonnet",
+  "defaultThinkingLevel": "low",
   "enabledModels": [
     "sap-anthropic/anthropic--claude-4.6-opus",
     "sap-anthropic/anthropic--claude-4.6-sonnet",
-    "sap-anthropic/anthropic--claude-4.5-haiku",
     "bosch-claude-code/claude-opus-4-6",
     "bosch-claude-code/claude-sonnet-4-6",
-    "bosch-claude-code/claude-haiku-4-5",
     "bosch-claude-code/claude-sonnet-4@20250514",
     "sap-openai/gpt-5",
-    "sap-openai/gpt-5.5",
     "sap-openai/gpt-5-mini",
+    "sap-openai/gpt-4.1",
+    "sap-openai/gpt-4.1-mini",
     "openai-codex/gpt-5.5",
     "openai-codex/gpt-5.4",
     "openai-codex/gpt-5.4-mini",
@@ -34,63 +19,27 @@
     "openai/gpt-5.4",
     "openai/gpt-5.4-mini"
   ],
+  "transport": "sse",
+  "hideThinkingBlock": true,
+  "quietStartup": true,
+  "collapseChangelog": true,
+  "enableInstallTelemetry": false,
+  "extensions": [],
   "packages": [
-    {
-      "source": "git:github.com/vchavkov82/pi-smart-sessions",
-      "skills": []
-    },
-    {
-      "source": "git:github.com/pasky/chrome-cdp-skill",
-      "skills": []
-    },
-    {
-      "source": "git:github.com/vchavkov82/pi-interactive-subagents",
-      "skills": []
-    },
-    {
-      "source": "git:github.com/vchavkov82/pi-parallel",
-      "skills": []
-    },
-    {
-      "source": "git:github.com/badlogic/pi-diff-review",
-      "skills": []
-    },
-    {
-      "source": "git:github.com/nicobailon/pi-mcp-adapter",
-      "skills": []
-    },
-    {
-      "source": "git:github.com/HazAT/glimpse",
-      "skills": []
-    },
-    {
-      "source": "git:github.com/vchavkov82/pi-autoresearch",
-      "skills": []
-    },
-    {
-      "source": "/home/vchavkov/.config/brain/.agents/obscura-plugin-pi"
-    },
-    {
-      "source": "npm:pi-subagents",
-      "extensions": [],
-      "skills": []
-    },
-    "git:github.com/HazAT/pi-smart-sessions",
-    "../../.config/brain/.agents/_pi/packages/pi-awao"
-  ],
-  "hideThinkingBlock": false,
-  "extensions": [
-    "+extensions/cmux/index.ts",
-    "+extensions/claude-code-cli/index.js",
-    "+extensions/model-thinking-controls/index.ts",
-    "+extensions/footer-inline-status/index.ts",
-    "-extensions/model-status/index.ts"
+    "/home/vchavkov/.config/brain/.agents/_pi/packages/pi-awao"
   ],
   "skills": [
-    "!**"
+    "~/.pi/agent/skills/sap-proxy-bench"
   ],
-  "enableSkillCommands": false,
+  "enableSkillCommands": true,
   "compaction": {
-    "enabled": true
-  }
+    "enabled": false
+  },
+  "terminal": {
+    "showImages": false
+  },
+  "warnings": {
+    "anthropicExtraUsage": false
+  },
+  "lastChangelogVersion": "0.73.0"
 }

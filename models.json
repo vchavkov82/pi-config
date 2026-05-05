@@ -2,7 +2,7 @@
   "providers": {
     "sap-anthropic": {
       "baseUrl": "http://localhost:6655/anthropic",
-      "apiKey": "!node /home/vchavkov/.pi/agent/read-sap-token.js",
+      "apiKey": "ANTHROPIC_AUTH_TOKEN",
       "authHeader": true,
       "api": "anthropic-messages",
       "compat": {
@@ -47,7 +47,7 @@
     "sap-openai": {
       "baseUrl": "http://localhost:6655/openai/v1",
       "api": "openai-completions",
-      "apiKey": "!node /home/vchavkov/.pi/agent/read-sap-token.js",
+      "apiKey": "ANTHROPIC_AUTH_TOKEN",
       "authHeader": true,
       "compat": {
         "supportsDeveloperRole": false,
@@ -58,17 +58,6 @@
           "id": "gpt-5",
           "name": "GPT-5 (SAP)",
           "reasoning": true
-        },
-        {
-          "id": "gpt-5.5",
-          "name": "GPT-5.5 (SAP)",
-          "reasoning": true,
-          "input": [
-            "text",
-            "image"
-          ],
-          "contextWindow": 1000000,
-          "maxTokens": 128000
         },
         {
           "id": "gpt-5-mini",
@@ -87,7 +76,7 @@
     "openai-codex": {
       "baseUrl": "https://chatgpt.com/backend-api",
       "api": "openai-codex-responses",
-      "apiKey": "!node /home/vchavkov/.pi/agent/read-openai-token.js",
+      "apiKey": "!node $HOME/.pi/agent/read-openai-token.js",
       "models": [
         {
           "id": "gpt-5.5",
@@ -127,7 +116,7 @@
     "openai": {
       "baseUrl": "https://api.openai.com/v1",
       "api": "openai-responses",
-      "apiKey": "!node /home/vchavkov/.pi/agent/read-openai-token.js",
+      "apiKey": "!node $HOME/.pi/agent/read-openai-api-key.js",
       "models": [
         {
           "id": "gpt-5.5",

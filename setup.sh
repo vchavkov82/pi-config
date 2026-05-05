@@ -79,12 +79,12 @@ fi
 # Install packages
 echo "Installing packages..."
 pi install git:github.com/nicobailon/pi-mcp-adapter 2>/dev/null || echo "  pi-mcp-adapter already installed"
-pi install git:github.com/HazAT/pi-smart-sessions 2>/dev/null || echo "  pi-smart-sessions already installed"
-pi install git:github.com/HazAT/pi-parallel 2>/dev/null || echo "  pi-parallel already installed"
+pi install git:github.com/vchavkov82/pi-smart-sessions 2>/dev/null || echo "  pi-smart-sessions already installed"
+pi install git:github.com/vchavkov82/pi-parallel 2>/dev/null || echo "  pi-parallel already installed"
 pi install git:github.com/pasky/chrome-cdp-skill 2>/dev/null || echo "  chrome-cdp-skill already installed"
 pi install git:github.com/HazAT/glimpse 2>/dev/null || echo "  glimpse already installed"
-pi install git:github.com/HazAT/pi-interactive-subagents 2>/dev/null || echo "  pi-interactive-subagents already installed"
-pi install git:github.com/HazAT/pi-autoresearch 2>/dev/null || echo "  pi-autoresearch already installed"
+pi install git:github.com/vchavkov82/pi-interactive-subagents 2>/dev/null || echo "  pi-interactive-subagents already installed"
+pi install git:github.com/vchavkov82/pi-autoresearch 2>/dev/null || echo "  pi-autoresearch already installed"
 pi install git:github.com/badlogic/pi-diff-review 2>/dev/null || echo "  pi-diff-review already installed"
 echo ""
 
