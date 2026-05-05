@@ -1,4 +1,4 @@
 {
-  "app.model.cycleForward": ["ctrl+p", "ctrl+shift+right"],
-  "app.model.cycleBackward": ["shift+ctrl+p", "ctrl+shift+left"]
+  "app.model.cycleForward": ["ctrl+shift+right", "f8"],
+  "app.model.cycleBackward": ["ctrl+shift+left", "f7"]
 }

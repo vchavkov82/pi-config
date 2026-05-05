@@ -37,26 +37,38 @@ export default function (pi: ExtensionAPI) {
 		setThinkingLevel(available[nextIndex], ctx);
 	}
 
-	pi.registerShortcut("ctrl+shift+up", {
-		description: "Increase thinking effort",
-		handler: async (ctx) => cycleThinkingLevel(1, ctx),
-	});
+	for (const shortcut of ["ctrl+up", "ctrl+shift+up", "f10"]) {
+		pi.registerShortcut(shortcut, {
+			description: "Increase thinking effort",
+			handler: async (ctx) => cycleThinkingLevel(1, ctx),
+		});
+	}
 
-	pi.registerShortcut("ctrl+shift+down", {
-		description: "Decrease thinking effort",
-		handler: async (ctx) => cycleThinkingLevel(-1, ctx),
-	});
+	for (const shortcut of ["ctrl+down", "ctrl+shift+down", "f9"]) {
+		pi.registerShortcut(shortcut, {
+			description: "Decrease thinking effort",
+			handler: async (ctx) => cycleThinkingLevel(-1, ctx),
+		});
+	}
 
 	pi.registerCommand("effort", {
 		description: "Set thinking effort for the current model",
 		handler: async (args, ctx) => {
-			const requested = args.trim().toLowerCase() as ModelThinkingLevel;
+			const requested = args.trim().toLowerCase();
 			if (requested) {
-				if (!THINKING_LEVELS.includes(requested)) {
-					ctx.ui.notify(`Unknown effort "${requested}". Use: ${formatAvailable(THINKING_LEVELS)}`, "error");
+				if (["up", "next", "+"].includes(requested)) {
+					cycleThinkingLevel(1, ctx);
 					return;
 				}
-				setThinkingLevel(requested, ctx);
+				if (["down", "prev", "previous", "-"].includes(requested)) {
+					cycleThinkingLevel(-1, ctx);
+					return;
+				}
+				if (!THINKING_LEVELS.includes(requested as ModelThinkingLevel)) {
+					ctx.ui.notify(`Unknown effort "${requested}". Use: ${formatAvailable(THINKING_LEVELS)}, up, down`, "error");
+					return;
+				}
+				setThinkingLevel(requested as ModelThinkingLevel, ctx);
 				return;
 			}
 
