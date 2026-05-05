@@ -75,7 +75,8 @@
       "extensions": [],
       "skills": []
     },
-    "git:github.com/HazAT/pi-smart-sessions"
+    "git:github.com/HazAT/pi-smart-sessions",
+    "../../.config/brain/.agents/_pi/packages/pi-awao"
   ],
   "hideThinkingBlock": false,
   "extensions": [
