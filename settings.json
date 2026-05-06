@@ -1,7 +1,7 @@
 {
-  "defaultProvider": "sap-anthropic",
-  "defaultModel": "anthropic--claude-4.6-sonnet",
-  "defaultThinkingLevel": "low",
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.5",
+  "defaultThinkingLevel": "high",
   "enabledModels": [
     "sap-anthropic/anthropic--claude-4.6-opus",
     "sap-anthropic/anthropic--claude-4.6-sonnet",
@@ -24,7 +24,9 @@
   "quietStartup": true,
   "collapseChangelog": true,
   "enableInstallTelemetry": false,
-  "extensions": [],
+  "extensions": [
+    "+extensions/cmux/index.ts"
+  ],
   "packages": [
     "/home/vchavkov/.config/brain/.agents/_pi/packages/pi-awao"
   ],
