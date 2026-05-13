@@ -14,8 +14,7 @@
           "name": "Claude 4.6 Opus (SAP)",
           "reasoning": false,
           "input": [
-            "text",
-            "image"
+            "text"
           ],
           "contextWindow": 200000,
           "maxTokens": 64000
@@ -25,8 +24,7 @@
           "name": "Claude 4.6 Sonnet (SAP)",
           "reasoning": false,
           "input": [
-            "text",
-            "image"
+            "text"
           ],
           "contextWindow": 200000,
           "maxTokens": 64000
@@ -36,8 +34,7 @@
           "name": "Claude 4.5 Haiku (SAP)",
           "reasoning": false,
           "input": [
-            "text",
-            "image"
+            "text"
           ],
           "contextWindow": 200000,
           "maxTokens": 64000
@@ -54,6 +51,7 @@
         "supportsReasoningEffort": false
       },
       "models": [
+
         {
           "id": "gpt-5",
           "name": "GPT-5 (SAP)",
