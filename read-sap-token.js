@@ -32,8 +32,6 @@ const anthropic = piAuth.anthropic || {};
 const sapAnthropic = piAuth["sap-anthropic"] || {};
 
 const token = firstString(
-  process.env.ANTHROPIC_AUTH_TOKEN,
-  process.env.ANTHROPIC_API_KEY,
   claudeEnv.ANTHROPIC_AUTH_TOKEN,
   claudeEnv.ANTHROPIC_API_KEY,
   sapAnthropic.key,
@@ -44,6 +42,8 @@ const token = firstString(
   anthropic.token,
   anthropic.apiKey,
   anthropic.api_key,
+  process.env.ANTHROPIC_AUTH_TOKEN,
+  process.env.ANTHROPIC_API_KEY,
 );
 
 if (token) process.stdout.write(token);

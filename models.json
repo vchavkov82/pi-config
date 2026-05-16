@@ -2,7 +2,7 @@
   "providers": {
     "sap-anthropic": {
       "baseUrl": "http://localhost:6655/anthropic",
-      "apiKey": "ANTHROPIC_AUTH_TOKEN",
+      "apiKey": "!node $HOME/.pi/agent/read-sap-token.js",
       "authHeader": true,
       "api": "anthropic-messages",
       "compat": {
@@ -44,7 +44,7 @@
     "sap-openai": {
       "baseUrl": "http://localhost:6655/openai/v1",
       "api": "openai-completions",
-      "apiKey": "ANTHROPIC_AUTH_TOKEN",
+      "apiKey": "!node $HOME/.pi/agent/read-sap-token.js",
       "authHeader": true,
       "compat": {
         "supportsDeveloperRole": false,
