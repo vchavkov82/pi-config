@@ -1,7 +1,7 @@
 {
-  "defaultProvider": "sap-openai",
-  "defaultModel": "gpt-5",
-  "defaultThinkingLevel": "medium",
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.5",
+  "defaultThinkingLevel": "low",
   "enabledModels": [
     "sap-anthropic/anthropic--claude-4.6-opus",
     "sap-anthropic/anthropic--claude-4.6-sonnet",
@@ -27,7 +27,8 @@
     "+extensions/cmux/index.ts"
   ],
   "packages": [
-    "/home/vchavkov/.config/brain/.agents/_pi/packages/pi-awao"
+    "../_pi/packages/pi-interactive-subagents",
+    "/home/c5389776/.config/brain/.agents/_pi/packages/pi-awao"
   ],
   "skills": [
     "~/.pi/agent/skills/sap-proxy-bench"
