@@ -31,7 +31,8 @@
     "/home/c5389776/.config/brain/.agents/_pi/packages/pi-awao"
   ],
   "skills": [
-    "~/.pi/agent/skills/sap-proxy-bench"
+    "~/.pi/agent/skills/sap-proxy-bench",
+    "~/.config/brain/.agents/skills"
   ],
   "enableSkillCommands": true,
   "compaction": {
