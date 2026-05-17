@@ -1,7 +1,7 @@
 {
   "defaultProvider": "sap-openai",
   "defaultModel": "gpt-5",
-  "defaultThinkingLevel": "high",
+  "defaultThinkingLevel": "medium",
   "enabledModels": [
     "sap-anthropic/anthropic--claude-4.6-opus",
     "sap-anthropic/anthropic--claude-4.6-sonnet",
@@ -43,5 +43,5 @@
   "warnings": {
     "anthropicExtraUsage": false
   },
-  "lastChangelogVersion": "0.74.0"
+  "lastChangelogVersion": "0.74.1"
 }
